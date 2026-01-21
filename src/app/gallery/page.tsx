@@ -5,6 +5,7 @@ import { Navigation } from '@/components/layout/Navigation';
 import { GALLERY_ITEMS } from '@/constant/constants';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Image as ImageIcon, ZoomIn, X } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
 
 export default function GalleryPage() {
     const [filter, setFilter] = useState<'all' | 'event' | 'culinary'>('all');
@@ -46,14 +47,15 @@ export default function GalleryPage() {
                     {/* Filter */}
                     <div className="flex justify-center gap-2 mb-12">
                         {['all', 'event', 'culinary'].map((f) => (
-                            <button
+                            <Button
                                 key={f}
                                 onClick={() => setFilter(f as 'all' | 'event' | 'culinary')}
-                                className={`px-8 py-2 rounded-full text-sm font-bold transition-all capitalize ${filter === f ? 'bg-convention text-white shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                                    }`}
+                                variant={filter === f ? 'convention' : 'ghost'}
+                                className={`rounded-full shadow-none ${filter === f ? 'shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                                size="sm"
                             >
                                 {f === 'all' ? 'Show All' : f === 'event' ? 'Events' : 'Culinary'}
-                            </button>
+                            </Button>
                         ))}
                     </div>
 
@@ -101,9 +103,13 @@ export default function GalleryPage() {
                         className="fixed inset-0 z-[60] bg-black/95 flex items-center justify-center p-4 backdrop-blur-md"
                         onClick={() => setSelectedImage(null)}
                     >
-                        <button className="absolute top-6 right-6 text-white/50 hover:text-white transition p-2 bg-white/10 rounded-full" onClick={() => setSelectedImage(null)}>
+                        <Button
+                            variant="ghost"
+                            className="absolute top-6 right-6 text-white/50 hover:text-white transition p-2 bg-white/10 rounded-full border-none h-auto w-auto"
+                            onClick={() => setSelectedImage(null)}
+                        >
                             <X size={24} />
-                        </button>
+                        </Button>
                         <motion.img
                             initial={{ scale: 0.9 }}
                             animate={{ scale: 1 }}

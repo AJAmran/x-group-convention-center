@@ -3,8 +3,11 @@ export const SITE_CONFIG = {
     name: "Shimanto Convention Center",
     shortName: "SHIMANTO",
     tagline: "Convention & Catering",
-    description: "Experience premium events, weddings, and conventions at Shimanto Convention Center.",
-    startYear: 2012,
+    url: "https://shimantoconvention.com", // Replace with actual production URL
+    logo: "https://shimanto.x-grouprestaurant.com/uploads/ff6c6ecade66e52f2d2992fa7cab9763.png",
+    description: "Shimanto Convention Center - The premier wedding and event venue in Dhanmondi, Dhaka. Experience elite hospitality, professional catering, and luxurious event spaces.",
+    startYear: 1992,
+    hasMultipleVenues: false, // Set to true if the center has multiple halls (e.g., Hall A, Hall B)
     contact: {
         phone: ["01755636268", "01755636321"],
         email: "shimanto@x-grouprestaurant.com",
@@ -17,15 +20,16 @@ export const SITE_CONFIG = {
         googleMapUrl: "#" // Placeholder for now
     },
     socials: {
-        facebook: "#",
-        instagram: "#",
-        linkedin: "#",
+        facebook: "https://www.facebook.com/shimantoconvention/?ref=pages_you_manage",
+        instagram: "https://www.instagram.com/xgroupchainrestaurants",
+        linkedin: "https://www.linkedin.com/company/x-group-chain-restaurant/",
+        youtube: "https://www.youtube.com/watch?v=l_tilYodkVo",
     },
     apps: {
         foodbite: {
             name: "Foodbitebd",
-            android: "#",
-            ios: "#"
+            android: "https://play.google.com/store/apps/details?id=com.xfoodonline.foodbitebd&pcampaignid=web_share",
+            ios: "https://apps.apple.com/us/app/foodbitebd/id1610522554"
         }
     },
     tradeLicense: "Trade/DSCC/239602/2019",

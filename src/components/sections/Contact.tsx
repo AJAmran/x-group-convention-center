@@ -1,6 +1,9 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { SITE_CONFIG } from '@/constant/config';
+import { Button } from '../ui/Button';
+import { SectionHeader } from '../ui/SectionHeader';
+import { Card } from '../ui/Card';
 
 export const Contact: React.FC = () => {
     return (
@@ -14,11 +17,13 @@ export const Contact: React.FC = () => {
 
                     {/* Contact Info */}
                     <div>
-                        <span className="text-gold font-bold tracking-widest text-sm uppercase">Get In Touch</span>
-                        <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-2 mb-6">Let&apos;s Plan Your <br /> Masterpiece</h2>
-                        <p className="text-gray-400 text-lg mb-10">
-                            Whether it&apos;s a grand wedding or a corporate gala, our team of experts is ready to bring your vision to life.
-                        </p>
+                        <SectionHeader
+                            subtitle="Get In Touch"
+                            title="Let's Plan Your Masterpiece"
+                            description="Whether it's a grand wedding or a corporate gala, our team of experts is ready to bring your vision to life."
+                            alignment="left"
+                            theme="light"
+                        />
 
                         <div className="space-y-8">
                             <div className="flex items-start gap-4">
@@ -58,14 +63,10 @@ export const Contact: React.FC = () => {
                                     <Clock size={24} />
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-lg text-white">Restaurant Hours</h4>
-                                    <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-x-6 gap-y-1 text-gray-400 mt-1 text-sm">
-                                        <span className="font-medium text-gray-300">Mon - Thu:</span>
-                                        <span>11:00 AM - 10:00 PM</span>
-                                        <span className="font-medium text-gray-300">Fri - Sat:</span>
-                                        <span>11:00 AM - 11:00 PM</span>
-                                        <span className="font-medium text-gray-300">Sunday:</span>
-                                        <span>10:00 AM - 10:00 PM</span>
+                                    <h4 className="font-bold text-lg text-white">Business Hour</h4>
+                                    <div className="text-gray-400 mt-1 text-sm">
+                                        <p className="font-medium text-gray-300">Saturday - Friday round the week</p>
+                                        <p>10:00am - 10:00pm</p>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +74,7 @@ export const Contact: React.FC = () => {
                     </div>
 
                     {/* Form */}
-                    <div className="bg-white rounded-2xl p-8 shadow-2xl">
+                    <Card className="p-8 shadow-2xl border-none" animate={true}>
                         <h3 className="text-2xl font-serif font-bold text-gray-900 mb-6">Send an Inquiry</h3>
                         <form className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -97,11 +98,11 @@ export const Contact: React.FC = () => {
                                 <textarea rows={4} className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-convention text-gray-900 outline-none" placeholder="Tell us about your event..."></textarea>
                             </div>
 
-                            <button type="button" className="w-full bg-gradient-to-r from-convention to-convention-dark text-white font-bold py-4 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                            <Button type="button" variant="convention" fullWidth>
                                 Send Message
-                            </button>
+                            </Button>
                         </form>
-                    </div>
+                    </Card>
                 </div>
             </div>
         </section>

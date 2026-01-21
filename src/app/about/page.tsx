@@ -3,8 +3,10 @@
 import React from 'react';
 import { Navigation } from '@/components/layout/Navigation';
 import { motion } from 'framer-motion';
-import { ChefHat, Award, Users, History } from 'lucide-react';
+import { Award, History, Shield, ArrowRight } from 'lucide-react';
 import { SITE_CONFIG } from '@/constant/config';
+import { Button } from '@/components/ui/Button';
+import { ChefShowcase } from '@/components/sections/ChefShowcase';
 
 export default function AboutPage() {
     return (
@@ -42,7 +44,7 @@ export default function AboutPage() {
                             viewport={{ once: true }}
                             className="relative"
                         >
-                            <img src="https://res.cloudinary.com/dkoprlux1/image/upload/v1764831198/empty-conference-room-generative-ai_587448-1943_dxuzhp.avif" alt="Our Mission" className="rounded-2xl shadow-2xl relative z-10" />
+                            <img src="https://shimanto.x-grouprestaurant.com/uploads/cbbfc52af0557d51883d0c9d2eeaf969.jpg" alt="Our Mission" className="rounded-2xl shadow-2xl relative z-10" />
                             <div className="absolute -bottom-10 -right-10 w-2/3 h-2/3 bg-convention/10 rounded-2xl -z-0"></div>
                         </motion.div>
 
@@ -63,34 +65,61 @@ export default function AboutPage() {
                                 {SITE_CONFIG.about.recentAddition} <br /> The Trade Licence number # {SITE_CONFIG.tradeLicense}.
                             </p>
 
-                            <div className="grid grid-cols-2 gap-6">
-                                <div className="p-4 bg-gray-50 rounded-xl border border-gray-100">
-                                    <Award className="text-gold mb-2" size={24} />
-                                    <h4 className="font-bold text-gray-900">Award Winning</h4>
-                                    <p className="text-sm text-gray-500">Recognized as Dhaka&apos;s Best Venue 2024</p>
-                                </div>
-                                <div className="p-4 bg-gray-50 rounded-xl border border-gray-100">
-                                    <Users className="text-catering mb-2" size={24} />
-                                    <h4 className="font-bold text-gray-900">Expert Team</h4>
-                                    <p className="text-sm text-gray-500">200+ Hospitality Professionals</p>
-                                </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
+                                <motion.div
+                                    whileHover={{ y: -5 }}
+                                    className="p-6 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group"
+                                >
+                                    <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center text-gold mb-4 group-hover:bg-gold group-hover:text-white transition-colors">
+                                        <Award size={24} />
+                                    </div>
+                                    <h4 className="font-bold text-gray-900 text-lg">30+ Years Legacy</h4>
+                                    <p className="text-sm text-gray-500 leading-relaxed">Delivering excellence and creating memories since 1992.</p>
+                                </motion.div>
+
+                                <motion.div
+                                    whileHover={{ y: -5 }}
+                                    className="p-6 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group"
+                                >
+                                    <div className="w-12 h-12 rounded-xl bg-convention/10 flex items-center justify-center text-convention mb-4 group-hover:bg-convention group-hover:text-white transition-colors">
+                                        <Shield size={24} />
+                                    </div>
+                                    <h4 className="font-bold text-gray-900 text-lg">Secured Environment</h4>
+                                    <p className="text-sm text-gray-500 leading-relaxed">A homely and well-secured setting for your peace of mind.</p>
+                                </motion.div>
                             </div>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* Team Snippet */}
-            <section className="py-20 bg-gray-50">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
-                    <ChefHat size={48} className="text-gray-300 mx-auto mb-6" />
-                    <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8">Guided by Culinary Masters</h2>
-                    <p className="text-gray-600 mb-12">
-                        Our kitchen is led by Executive Chef Rahman, whose 20 years of experience across Europe and Asia brings a unique fusion approach to our catering.
-                    </p>
-                    <button className="text-convention font-bold hover:underline">Meet Our Full Team &rarr;</button>
+            {/* Values / Stats Section */}
+            <section className="py-24 bg-gray-900 text-white relative overflow-hidden">
+                <div className="absolute inset-0 bg-[url('https://shimanto.x-grouprestaurant.com/uploads/0a1fa9f07cbdf936a7c69fad306091dc.jpg')] bg-cover bg-center opacity-10"></div>
+                <div className="container mx-auto px-4 relative z-10">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div>
+                            <p className="text-4xl md:text-5xl font-serif font-bold text-gold mb-2">5,000+</p>
+                            <p className="text-xs uppercase tracking-widest text-gray-400 font-bold">Events Hosted</p>
+                        </div>
+                        <div>
+                            <p className="text-4xl md:text-5xl font-serif font-bold text-gold mb-2">32+</p>
+                            <p className="text-xs uppercase tracking-widest text-gray-400 font-bold">Years Experience</p>
+                        </div>
+                        <div>
+                            <p className="text-4xl md:text-5xl font-serif font-bold text-gold mb-2">1M+</p>
+                            <p className="text-xs uppercase tracking-widest text-gray-400 font-bold">Happy Guests</p>
+                        </div>
+                        <div>
+                            <p className="text-4xl md:text-5xl font-serif font-bold text-gold mb-2">50+</p>
+                            <p className="text-xs uppercase tracking-widest text-gray-400 font-bold">Culinary Experts</p>
+                        </div>
+                    </div>
                 </div>
             </section>
+
+            {/* Chef Showcase */}
+            <ChefShowcase bgVariant="white" />
         </div>
     );
 }

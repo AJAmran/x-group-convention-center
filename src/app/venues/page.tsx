@@ -4,8 +4,14 @@ import { VENUES } from '@/constant/constants';
 import { motion } from 'framer-motion';
 import { MapPin, Users, Ruler, Star, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { SITE_CONFIG } from '@/constant/config';
+import { redirect } from 'next/navigation';
 
 export default function VenuesPage() {
+    if (!SITE_CONFIG.hasMultipleVenues) {
+        redirect('/');
+    }
+
     return (
         <div className="bg-white min-h-screen">
             <Navigation />
@@ -74,12 +80,9 @@ export default function VenuesPage() {
                                     </div>
 
                                     <div className="flex gap-4">
-                                        <Link href="/contact" className="bg-convention text-white px-8 py-3 rounded-full font-bold hover:bg-convention-dark transition shadow-lg hover:shadow-xl">
+                                        <Link href="/reservation" className="bg-convention text-white px-8 py-3 rounded-full font-bold hover:bg-convention-dark transition shadow-lg hover:shadow-xl">
                                             Book This Venue
                                         </Link>
-                                        <button className="text-gray-500 font-medium hover:text-black flex items-center gap-2 px-6 py-3">
-                                            Download Floor Plan <ArrowRight size={18} />
-                                        </button>
                                     </div>
                                 </div>
                             </motion.div>

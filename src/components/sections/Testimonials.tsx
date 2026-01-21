@@ -4,6 +4,9 @@ import React, { useState } from 'react';
 import { Star, Quote, Utensils, ChevronLeft, ChevronRight } from 'lucide-react';
 import { TESTIMONIALS } from '@/constant/constants';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '../ui/Button';
+import { SectionHeader } from '../ui/SectionHeader';
+import { Card } from '../ui/Card';
 
 export const Testimonials: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,33 +24,42 @@ export const Testimonials: React.FC = () => {
   return (
     <section id="testimonials" className="py-20 bg-neutral-50 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-convention font-bold tracking-widest text-sm uppercase">Client Stories</span>
-          <h2 className="text-4xl font-serif font-bold text-gray-900 mt-2">Memorable Experiences</h2>
-        </div>
+        <SectionHeader
+          subtitle="Client Stories"
+          title="Memorable Experiences"
+          theme="convention"
+        />
 
         <div className="relative max-w-4xl mx-auto">
           {/* Navigation Buttons */}
           <div className="absolute top-1/2 -left-4 md:-left-12 transform -translate-y-1/2 z-20">
-            <button onClick={prevSlide} className="p-2 md:p-3 rounded-full bg-white shadow-lg text-gray-600 hover:text-convention hover:scale-110 transition-all">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={prevSlide}
+              className="p-2 md:p-3 rounded-full bg-white shadow-lg text-gray-600 hover:text-convention hover:scale-110 transition-all border-none"
+            >
               <ChevronLeft size={24} />
-            </button>
+            </Button>
           </div>
           <div className="absolute top-1/2 -right-4 md:-right-12 transform -translate-y-1/2 z-20">
-            <button onClick={nextSlide} className="p-2 md:p-3 rounded-full bg-white shadow-lg text-gray-600 hover:text-convention hover:scale-110 transition-all">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={nextSlide}
+              className="p-2 md:p-3 rounded-full bg-white shadow-lg text-gray-600 hover:text-convention hover:scale-110 transition-all border-none"
+            >
               <ChevronRight size={24} />
-            </button>
+            </Button>
           </div>
 
           <div className="overflow-hidden px-4 md:px-0">
             <AnimatePresence mode="wait">
-              <motion.div
+              <Card
                 key={currentIndex}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.5 }}
-                className="bg-white rounded-2xl p-8 md:p-12 shadow-xl relative border border-gray-100"
+                animate={true}
+                hoverEffect={false}
+                className="p-8 md:p-12 shadow-2xl relative border-none"
               >
                 <div className="absolute top-6 right-8 text-gold/20">
                   <Quote size={80} />
@@ -61,6 +73,10 @@ export const Testimonials: React.FC = () => {
                         <img
                           src={currentTestimonial.image}
                           alt={currentTestimonial.clientName}
+                          title={currentTestimonial.clientName}
+                          width={100}
+                          height={100}
+                          loading="lazy"
                           className="w-full h-full rounded-full object-cover border-4 border-white shadow-inner"
                         />
                       </div>
@@ -98,17 +114,18 @@ export const Testimonials: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </Card>
             </AnimatePresence>
           </div>
 
           {/* Indicators */}
           <div className="flex justify-center gap-2 mt-8">
             {TESTIMONIALS.map((_, idx) => (
-              <button
+              <Button
                 key={idx}
+                variant="ghost"
                 onClick={() => setCurrentIndex(idx)}
-                className={`h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-8 bg-convention' : 'w-2 bg-gray-300 hover:bg-gray-400'}`}
+                className={`p-0 min-w-0 h-2 rounded-full transition-all duration-300 border-none hover:bg-transparent ${idx === currentIndex ? 'w-8 bg-convention' : 'w-2 bg-gray-300 hover:bg-gray-400'}`}
               />
             ))}
           </div>

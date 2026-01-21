@@ -1,6 +1,8 @@
 import React from 'react';
 import { CheckCircle, Apple, Play } from 'lucide-react';
 import { SITE_CONFIG } from '@/constant/config';
+import { Button } from '../ui/Button';
+import { SectionHeader } from '../ui/SectionHeader';
 
 export const AppPromotion: React.FC = () => {
   return (
@@ -13,15 +15,14 @@ export const AppPromotion: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
 
           <div className="md:w-1/2 space-y-8">
-            <div className="inline-block bg-white/20 px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">
-              Powered by {SITE_CONFIG.apps.foodbite.name}
-            </div>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold leading-tight">
-              {SITE_CONFIG.shortName} Flavors,<br />Delivered to Your Door
-            </h2>
-            <p className="text-blue-100 text-lg">
-              Can&apos;t make it to the venue? Order our signature chef specials directly to your home through the Foodbitebd app. Experience 5-star dining in your living room.
-            </p>
+            <SectionHeader
+              subtitle={`Powered by ${SITE_CONFIG.apps.foodbite.name}`}
+              title={`${SITE_CONFIG.shortName} Flavors, Delivered to Your Door`}
+              description="Can't make it to the venue? Order our signature chef specials directly to your home through the Foodbitebd app. Experience premium dining in your living room."
+              alignment="left"
+              theme="light"
+              className="mb-8"
+            />
 
             <div className="space-y-4">
               {[
@@ -37,20 +38,31 @@ export const AppPromotion: React.FC = () => {
             </div>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <button className="flex items-center gap-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-900 transition-all border border-gray-800 shadow-lg group">
+              <a
+                href={SITE_CONFIG.apps.foodbite.ios}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-900 transition-all border border-gray-800 shadow-lg group h-auto"
+              >
                 <div className="text-3xl group-hover:scale-110 transition-transform"><Apple /></div>
                 <div className="text-left">
                   <div className="text-[10px] uppercase font-bold opacity-80">Download on the</div>
                   <div className="text-lg font-bold leading-none">App Store</div>
                 </div>
-              </button>
-              <button className="flex items-center gap-3 bg-white text-black px-6 py-3 rounded-xl hover:bg-gray-100 transition-all shadow-lg group">
+              </a>
+
+              <a
+                href={SITE_CONFIG.apps.foodbite.android}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-white text-black px-6 py-3 rounded-xl hover:bg-gray-100 transition-all shadow-lg group h-auto"
+              >
                 <div className="text-3xl group-hover:scale-110 transition-transform text-convention"><Play /></div>
                 <div className="text-left">
                   <div className="text-[10px] uppercase font-bold text-gray-600">Get it on</div>
                   <div className="text-lg font-bold leading-none">Google Play</div>
                 </div>
-              </button>
+              </a>
             </div>
           </div>
 
@@ -59,19 +71,16 @@ export const AppPromotion: React.FC = () => {
             <div className="relative w-[300px] h-[600px] bg-gray-900 rounded-[3rem] border-8 border-gray-800 shadow-2xl overflow-hidden transform rotate-3 hover:rotate-0 transition-transform duration-500">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-6 bg-black rounded-b-xl z-20"></div>
               <img
-                src="https://picsum.photos/id/429/600/1200"
+                src="https://i.ibb.co.com/JTPrrLg/Whats-App-Image-2026-01-21-at-3-10-31-PM.jpg"
                 alt="Foodbitebd App Interface"
+                title="Foodbitebd Mobile App Interface"
+                width={717}
+                height={1600}
+                loading="lazy"
                 className="w-full h-full object-cover opacity-80"
               />
 
-              {/* Overlay UI Mock */}
-              <div className="absolute top-12 left-0 right-0 p-4">
-                <div className="flex justify-between items-center text-white mb-4">
-                  <span className="font-bold">Foodbitebd</span>
-                  <span className="bg-convention px-2 py-0.5 rounded text-xs">LIVE</span>
-                </div>
-                <h3 className="text-white font-serif text-2xl font-bold leading-tight drop-shadow-md">Today&apos;s Special: Smoked Beef Brisket</h3>
-              </div>
+
 
               <div className="absolute bottom-0 w-full bg-white/95 backdrop-blur-md p-6 rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.2)]">
                 <div className="flex justify-between items-center mb-4">
@@ -84,23 +93,9 @@ export const AppPromotion: React.FC = () => {
                     <div className="font-bold text-convention text-lg">4.9 ★</div>
                   </div>
                 </div>
-                <button className="w-full bg-convention text-white font-bold py-3.5 rounded-xl shadow-lg hover:bg-convention-dark transition-colors">
-                  Order Now • $45.00
-                </button>
-              </div>
-            </div>
-
-            {/* Floating Elements */}
-            <div className="absolute top-32 -right-4 bg-white p-4 rounded-xl shadow-xl animate-bounce hidden sm:block">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="font-bold text-sm text-gray-800">Order Accepted</span>
-              </div>
-            </div>
-            <div className="absolute bottom-40 -left-10 bg-white p-4 rounded-xl shadow-xl animate-pulse hidden sm:block">
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-lg text-convention">50% OFF</span>
-                <span className="text-xs text-gray-500 font-medium">First App Order</span>
+                <Button variant="convention" fullWidth className="py-3.5 rounded-xl shadow-lg">
+                  Order Now • ৳1550
+                </Button>
               </div>
             </div>
           </div>

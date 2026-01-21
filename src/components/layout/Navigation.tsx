@@ -5,6 +5,7 @@ import { Menu, X, Calendar, ChefHat, MapPin, Image, Phone, Home, Info } from 'lu
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { SITE_CONFIG } from '@/constant/config';
+import { Button } from '../ui/Button';
 
 export const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,39 +19,46 @@ export const Navigation: React.FC = () => {
         <div className="flex justify-between items-center h-20">
 
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex items-center gap-2 cursor-pointer group">
-            <div className="w-10 h-10 bg-convention rounded-tr-xl rounded-bl-xl flex items-center justify-center text-white font-serif font-bold text-xl group-hover:bg-convention-dark transition-colors">
-              {SITE_CONFIG.shortName.charAt(0)}
-            </div>
-            <div className="flex flex-col">
-              <span className="font-serif text-xl font-bold text-convention-dark leading-none">{SITE_CONFIG.shortName}</span>
-              <span className="text-[0.65rem] tracking-widest text-catering uppercase font-medium">{SITE_CONFIG.tagline}</span>
-            </div>
+          <Link href="/" className="flex-shrink-0 flex items-center cursor-pointer">
+            <img
+              src="https://shimanto.x-grouprestaurant.com/uploads/ff6c6ecade66e52f2d2992fa7cab9763.png"
+              alt="Shimanto Convention Center"
+              title="Shimanto Convention Center Logo"
+              width={493}
+              height={174}
+              className="h-14 md:h-16 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 items-center">
             <NavLink href="/" label="Home" active={isActive('/')} />
             <NavLink href="/about" label="About" active={isActive('/about')} />
-            <NavLink href="/venues" label="Venues" active={isActive('/venues')} />
+            {SITE_CONFIG.hasMultipleVenues && (
+              <NavLink href="/venues" label="Venues" active={isActive('/venues')} />
+            )}
             <NavLink href="/menu" label="Menu" active={isActive('/menu')} />
             <NavLink href="/gallery" label="Gallery" active={isActive('/gallery')} />
+            <NavLink href="/reservation" label="Reservation" active={isActive('/reservation')} />
             <NavLink href="/contact" label="Contact" active={isActive('/contact')} />
 
-            <Link href="/contact" className="bg-gradient-to-r from-convention to-convention-dark text-white px-6 py-2.5 rounded-full font-medium shadow-lg hover:shadow-convention/30 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2">
-              <Calendar size={16} />
-              <span>Book Event</span>
+            <Link href="/reservation">
+              <Button variant="convention" className="flex items-center gap-2 rounded-full px-6 py-2.5">
+                <Calendar size={16} />
+                <span>Book Event</span>
+              </Button>
             </Link>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
-            <button
+            <Button
+              variant="ghost"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 hover:text-convention focus:outline-none"
+              className="text-gray-600 hover:text-convention focus:outline-none p-2 h-auto hover:bg-transparent border-none"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -61,13 +69,18 @@ export const Navigation: React.FC = () => {
           <div className="px-4 pt-4 pb-6 space-y-2">
             <MobileNavLink href="/" icon={<Home size={18} />} label="Home" onClick={() => setIsOpen(false)} />
             <MobileNavLink href="/about" icon={<Info size={18} />} label="About Us" onClick={() => setIsOpen(false)} />
-            <MobileNavLink href="/venues" icon={<MapPin size={18} />} label="Venues" onClick={() => setIsOpen(false)} />
+            {SITE_CONFIG.hasMultipleVenues && (
+              <MobileNavLink href="/venues" icon={<MapPin size={18} />} label="Venues" onClick={() => setIsOpen(false)} />
+            )}
             <MobileNavLink href="/menu" icon={<ChefHat size={18} />} label="Menu & Catering" onClick={() => setIsOpen(false)} />
             <MobileNavLink href="/gallery" icon={<Image size={18} />} label="Gallery" onClick={() => setIsOpen(false)} />
+            <MobileNavLink href="/reservation" icon={<Calendar size={18} />} label="Reservation" onClick={() => setIsOpen(false)} />
             <MobileNavLink href="/contact" icon={<Phone size={18} />} label="Contact" onClick={() => setIsOpen(false)} />
 
-            <Link href="/contact" onClick={() => setIsOpen(false)} className="block w-full mt-8 bg-convention text-white text-center px-4 py-3 rounded-lg font-medium shadow-md">
-              Plan Your Event
+            <Link href="/reservation" onClick={() => setIsOpen(false)} className="block w-full mt-8">
+              <Button variant="convention" fullWidth className="rounded-lg">
+                Plan Your Event
+              </Button>
             </Link>
           </div>
         </div>

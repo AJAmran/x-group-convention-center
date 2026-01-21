@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import { ZoomIn, X } from "lucide-react";
 import { GALLERY_ITEMS } from "@/constant/constants";
 import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "../ui/Button";
+import { SectionHeader } from "../ui/SectionHeader";
+import { Card } from "../ui/Card";
 
 export const Gallery: React.FC = () => {
   const [filter, setFilter] = useState<"all" | "event" | "culinary">("all");
@@ -19,27 +22,24 @@ export const Gallery: React.FC = () => {
       <section id="gallery" className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-            <div>
-              <span className="text-convention font-bold tracking-widest text-sm uppercase">
-                Our Portfolio
-              </span>
-              <h2 className="text-4xl font-serif font-bold text-gray-900 mt-2">
-                Visual Journey
-              </h2>
-            </div>
+            <SectionHeader
+              subtitle="Our Portfolio"
+              title="Visual Journey"
+              alignment="left"
+              className="mb-0"
+            />
 
             <div className="flex gap-2 mt-6 md:mt-0">
               {(["all", "event", "culinary"] as const).map((f) => (
-                <button
+                <Button
                   key={f}
                   onClick={() => setFilter(f)}
-                  className={`px-6 py-2 rounded-full text-sm font-bold transition-all capitalize ${filter === f
-                      ? "bg-convention text-white shadow-lg"
-                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    }`}
+                  variant={filter === f ? "convention" : "ghost"}
+                  className={`rounded-full text-sm shadow-none ${filter === f ? "shadow-lg" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
+                  size="sm"
                 >
                   {f === "all" ? "All" : f === "event" ? "Event Moments" : "Culinary Art"}
-                </button>
+                </Button>
               ))}
             </div>
           </div>
@@ -50,19 +50,18 @@ export const Gallery: React.FC = () => {
           >
             <AnimatePresence>
               {filteredItems.map((item) => (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.3 }}
+                <Card
                   key={item.id}
-                  className="group relative aspect-w-4 aspect-h-3 rounded-xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-shadow"
+                  className="group relative aspect-w-4 aspect-h-3 rounded-xl overflow-hidden cursor-pointer border-none shadow-md"
                   onClick={() => setSelectedImage(item.image)}
                 >
                   <img
                     src={item.image}
                     alt={item.title}
+                    title={item.title}
+                    width={item.width || 800}
+                    height={item.height || 600}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
 
@@ -82,7 +81,7 @@ export const Gallery: React.FC = () => {
                       {item.title}
                     </h3>
                   </div>
-                </motion.div>
+                </Card>
               ))}
             </AnimatePresence>
           </motion.div>
@@ -99,12 +98,13 @@ export const Gallery: React.FC = () => {
             className="fixed inset-0 z-[60] bg-black/90 flex items-center justify-center p-4 backdrop-blur-sm"
             onClick={() => setSelectedImage(null)}
           >
-            <button
-              className="absolute top-6 right-6 text-white/70 hover:text-white transition"
+            <Button
+              variant="ghost"
+              className="absolute top-6 right-6 text-white/70 hover:text-white transition p-0 hover:bg-transparent border-none"
               onClick={() => setSelectedImage(null)}
             >
               <X size={40} />
-            </button>
+            </Button>
             <motion.img
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}

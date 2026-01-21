@@ -3,6 +3,9 @@
 import React, { useState } from "react";
 import { Calendar, Users, Check, Loader2 } from "lucide-react";
 import { VENUES, PACKAGES } from "@/constant/constants";
+import { Button } from "../ui/Button";
+import { SectionHeader } from "../ui/SectionHeader";
+import { Card } from "../ui/Card";
 
 export const BookingWizard: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -38,16 +41,14 @@ export const BookingWizard: React.FC = () => {
   return (
     <div id="booking" className="py-20 bg-neutral-50">
       <div className="max-w-4xl mx-auto px-4">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-serif font-bold text-convention-dark">
-            Plan Your Experience
-          </h2>
-          <p className="text-gray-500 mt-2">
-            Get an instant estimate for your event
-          </p>
-        </div>
+        <SectionHeader
+          title="Plan Your Experience"
+          subtitle="Instant Quote"
+          description="Get an instant estimate for your event by selecting your preferences."
+          theme="convention"
+        />
 
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+        <Card className="shadow-2xl overflow-hidden border-none" animate={true} hoverEffect={false}>
           {/* Progress Bar */}
           <div className="bg-gray-50 px-8 py-4 border-b border-gray-100 flex justify-between">
             {[1, 2, 3].map((s) => (
@@ -124,32 +125,36 @@ export const BookingWizard: React.FC = () => {
                   <div className="flex gap-3 flex-wrap">
                     {["Wedding", "Corporate", "Gala", "Private Party"].map(
                       (type) => (
-                        <button
+                        <Button
                           key={type}
                           onClick={() =>
                             setFormData({ ...formData, eventType: type })
                           }
-                          className={`px-4 py-2 rounded-full text-sm border ${formData.eventType === type
-                            ? "bg-convention text-white border-convention"
-                            : "border-gray-300 text-gray-600 hover:bg-gray-50"
+                          variant={formData.eventType === type ? "convention" : "ghost"}
+                          className={`rounded-full shadow-none border ${formData.eventType === type
+                            ? ""
+                            : "border-gray-300 text-gray-600 hover:bg-gray-50 bg-white"
                             }`}
+                          size="sm"
                         >
                           {type}
-                        </button>
+                        </Button>
                       )
                     )}
                   </div>
                 </div>
-                <button
+                <Button
                   onClick={handleNext}
-                  className="w-full bg-convention text-white py-4 rounded-lg font-bold hover:bg-convention-dark transition shadow-lg flex justify-center items-center gap-2"
+                  fullWidth
+                  className="py-4 text-lg shadow-lg flex justify-center items-center gap-2"
+                  variant="convention"
                 >
                   {loading ? (
                     <Loader2 className="animate-spin" />
                   ) : (
                     "Check Availability"
                   )}
-                </button>
+                </Button>
               </div>
             )}
 
@@ -199,7 +204,7 @@ export const BookingWizard: React.FC = () => {
                           setFormData({ ...formData, packageId: p.id })
                         }
                         className={`flex justify-between items-center p-4 border rounded-lg cursor-pointer transition-all ${formData.packageId === p.id
-                          ? "border-catering bg-red-50"
+                          ? "border-convention bg-blue-50"
                           : "border-gray-200 hover:bg-gray-50"
                           }`}
                       >
@@ -210,8 +215,8 @@ export const BookingWizard: React.FC = () => {
                           </p>
                         </div>
                         <div className="text-right">
-                          <span className="block font-bold text-catering">
-                            ${p.pricePerHead}
+                          <span className="block font-bold text-convention">
+                            ৳{p.pricePerHead}
                           </span>
                           <span className="text-xs text-gray-400">
                             per person
@@ -223,23 +228,25 @@ export const BookingWizard: React.FC = () => {
                 </div>
 
                 <div className="flex gap-4">
-                  <button
+                  <Button
                     onClick={() => setStep(1)}
-                    className="w-1/3 border border-gray-300 py-3 rounded-lg font-medium text-gray-600"
+                    variant="outline"
+                    className="w-1/3 border-gray-300 text-gray-600 hover:bg-gray-50"
                   >
                     Back
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={handleNext}
                     disabled={!formData.venueId || !formData.packageId}
-                    className="w-2/3 bg-convention text-white py-3 rounded-lg font-bold hover:bg-convention-dark transition disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center gap-2"
+                    variant="convention"
+                    className="w-2/3 flex justify-center items-center gap-2 shadow-none"
                   >
                     {loading ? (
                       <Loader2 className="animate-spin" />
                     ) : (
                       "Calculate Estimate"
                     )}
-                  </button>
+                  </Button>
                 </div>
               </div>
             )}
@@ -274,23 +281,31 @@ export const BookingWizard: React.FC = () => {
                       Total Estimate
                     </span>
                     <span className="font-bold text-2xl text-convention">
-                      ${calculateTotal().toLocaleString()}
+                      ৳{calculateTotal().toLocaleString()}
                     </span>
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-3 max-w-xs mx-auto">
-                  <button className="w-full bg-gold text-black py-3 rounded-lg font-bold hover:bg-yellow-500 transition shadow-lg">
+                  <Button className="w-full bg-gold text-black hover:bg-yellow-500 shadow-lg border-none">
                     Confirm Booking
-                  </button>
-                  <button
+                  </Button>
+                  <div className="w-full mt-2">
+                    <img
+                      src="https://shimanto.x-grouprestaurant.com/uploads/SSLCommerz-Pay-With-logo-All-Size-03.png"
+                      alt="Pay Securely"
+                      className="w-full h-auto rounded opacity-90"
+                    />
+                  </div>
+                  <Button
                     onClick={() => {
                       window.dispatchEvent(new Event("open-ai-chat"));
                     }}
-                    className="w-full border-2 border-convention text-convention py-3 rounded-lg font-bold hover:bg-blue-50 transition flex items-center justify-center gap-2"
+                    variant="outline"
+                    className="w-full border-2 border-convention text-convention hover:bg-blue-50 flex items-center justify-center gap-2"
                   >
                     <span>Discuss with Chef</span>
-                  </button>
+                  </Button>
                 </div>
                 <p className="text-xs text-gray-400 mt-4">
                   *Prices are estimates. Final quote provided after consultation.
@@ -298,7 +313,7 @@ export const BookingWizard: React.FC = () => {
               </div>
             )}
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   );

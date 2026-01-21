@@ -18,20 +18,109 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_CONFIG.url),
   title: {
     template: `%s | ${SITE_CONFIG.name}`,
-    default: SITE_CONFIG.name,
+    default: `${SITE_CONFIG.name} | Premium Event & Wedding Venue in Dhaka`,
   },
   description: SITE_CONFIG.description,
-  keywords: ["convention center", "wedding venue", "events", "catering", "conference"],
+  keywords: [
+    "Shimanto Convention Center",
+    "Wedding Venue Dhaka",
+    "Convention Center Dhanmondi",
+    "Event Spaces Dhaka",
+    "Catering Services Dhaka",
+    "Birthday Party Venue",
+    "Corporate Event Venue",
+    "X-Group Restaurant",
+    "Luxury Wedding Hall"
+  ],
+  authors: [{ name: SITE_CONFIG.name }],
+  creator: SITE_CONFIG.name,
+  publisher: SITE_CONFIG.name,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.x-group.com",
+    url: SITE_CONFIG.url,
     title: SITE_CONFIG.name,
     description: SITE_CONFIG.description,
     siteName: SITE_CONFIG.name,
+    images: [
+      {
+        url: SITE_CONFIG.logo,
+        width: 1200,
+        height: 630,
+        alt: SITE_CONFIG.name,
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_CONFIG.name,
+    description: SITE_CONFIG.description,
+    images: [SITE_CONFIG.logo],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": SITE_CONFIG.name,
+  "image": SITE_CONFIG.logo,
+  "@id": SITE_CONFIG.url,
+  "url": SITE_CONFIG.url,
+  "telephone": SITE_CONFIG.contact.phone[0],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": SITE_CONFIG.contact.address.street,
+    "addressLocality": SITE_CONFIG.contact.address.area,
+    "addressRegion": SITE_CONFIG.contact.address.city,
+    "addressCountry": "BD"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 23.7383, // Approximate for Dhanmondi/Shimanto Square
+    "longitude": 90.3754
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "10:00",
+    "closes": "22:00"
+  },
+  "sameAs": [
+    SITE_CONFIG.socials.facebook,
+    SITE_CONFIG.socials.instagram,
+    SITE_CONFIG.socials.linkedin,
+    SITE_CONFIG.socials.youtube
+  ]
 };
 
 export default function RootLayout({
@@ -44,6 +133,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Navigation />
         <main className="min-h-screen flex flex-col font-sans text-gray-900 bg-neutral-50 scroll-smooth">
           {children}

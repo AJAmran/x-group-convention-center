@@ -1,4 +1,43 @@
-import { Venue, MenuItem, MenuPackage, Testimonial, Cert, GalleryItem, AdditionalItem } from '../types';
+import { Venue, MenuItem, MenuPackage, Testimonial, Cert, GalleryItem, AdditionalItem, HeroSlide } from '../types';
+
+export const HERO_SLIDES: HeroSlide[] = [
+  {
+    id: 1,
+    bgImage: 'https://shimanto.x-grouprestaurant.com/uploads/0a1fa9f07cbdf936a7c69fad306091dc.jpg',
+    subtitle: 'DISTINCTIVE SPACES',
+    title: 'Where Grand Events\nTake Shape',
+    desc: 'Experience Shimanto Convention Center — an elegant setting crafted for seamless gatherings and memorable occasions.',
+    theme: 'convention',
+    ctaPrimary: 'Explore Venues',
+    ctaSecondary: 'Virtual Tour',
+    width: 1200,
+    height: 700
+  },
+  {
+    id: 2,
+    bgImage: 'https://shimanto.x-grouprestaurant.com/uploads/48a95b0f04a451441831746f62684056.jpg',
+    subtitle: 'TIMELESS CELEBRATIONS',
+    title: 'Where Every Moment\nFeels Just Right',
+    desc: 'From elegant weddings to cherished milestones, Shimanto Convention Center brings tradition, warmth, and grace to every celebration.',
+    theme: 'catering',
+    ctaPrimary: 'View Menus',
+    ctaSecondary: 'Meet the Chefs',
+    width: 1200,
+    height: 800
+  },
+  {
+    id: 3,
+    bgImage: 'https://shimanto.x-grouprestaurant.com/uploads/06121823e79e0a2001601361a6c4b887.jpg',
+    subtitle: 'EVENTS WITH INTENT',
+    title: 'Designed for Focus\nBuilt to Impress',
+    desc: 'Host conferences, seminars, and corporate programs in a polished environment where clarity, comfort, and professionalism lead the way.',
+    theme: 'unified',
+    ctaPrimary: 'Plan Your Event',
+    ctaSecondary: 'Watch Video',
+    width: 1200,
+    height: 800
+  }
+];
 
 export const VENUES: Venue[] = [
   {
@@ -8,7 +47,9 @@ export const VENUES: Venue[] = [
     type: 'Ballroom',
     image: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764831199/restaurant-hall-with-round-square-tables-some-chairs-plants_140725-8031_tiw99o.avif',
     description: 'Our flagship venue featuring crystal chandeliers and column-free architecture.',
-    suggestedMenuId: '601'
+    suggestedMenuId: '601',
+    width: 1200,
+    height: 800
   },
   {
     id: 'v2',
@@ -17,7 +58,9 @@ export const VENUES: Venue[] = [
     type: 'Conference',
     image: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764831198/empty-conference-room-generative-ai_587448-1943_dxuzhp.avif',
     description: 'Modern minimalist design with panoramic windows overlooking the river.',
-    suggestedMenuId: '602'
+    suggestedMenuId: '602',
+    width: 1200,
+    height: 800
   },
   {
     id: 'v3',
@@ -26,44 +69,52 @@ export const VENUES: Venue[] = [
     type: 'Outdoor',
     image: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764831198/restaurant-hall-with-lots-table_140725-6309_wx2fva.avif',
     description: 'An open-air venue surrounded by lush greenery and live cooking stations.',
-    suggestedMenuId: '603'
+    suggestedMenuId: '603',
+    width: 1200,
+    height: 800
   }
 ];
 
 export const MENU_ITEMS: MenuItem[] = [
   {
     id: 'm1',
-    name: 'Saffron Risotto & Scallops',
-    description: 'Creamy saffron-infused risotto topped with pan-seared scallops.',
+    name: 'Kachchi Biriyani (Bashmoti)',
+    description: 'Traditional premium Bashmoti rice layer-cooked with tender mutton and aromatic spices.',
     category: 'Main',
-    tags: ['Chef Special', 'Seafood'],
-    image: 'https://picsum.photos/id/493/400/300',
-    isChefSpecial: true
+    tags: ['Signature', 'Traditional', 'Biriyani'],
+    image: 'https://shimanto.x-grouprestaurant.com/uploads/1a64c7d90d8040e5b8719df9c3bffe8a.jpg',
+    isChefSpecial: true,
+    width: 235,
+    height: 157
   },
   {
     id: 'm2',
-    name: 'Smoked Beef Brisket',
-    description: 'Slow-cooked for 12 hours with our signature spice rub.',
+    name: 'Shahi Morog Polao',
+    description: 'A royal delicacy of chicken and rice served with Rezala and kebabs.',
     category: 'Main',
-    tags: ['Meat', 'Signature'],
-    image: 'https://picsum.photos/id/431/400/300',
-    isChefSpecial: false
+    tags: ['Royal', 'Feast', 'Polao'],
+    image: 'https://shimanto.x-grouprestaurant.com/uploads/5bab02e83dc13c11edc2d59a041594f9.jpg',
+    isChefSpecial: true,
+    width: 1600,
+    height: 1064
   },
   {
     id: 'm3',
-    name: 'Mango Cardamom Mousse',
-    description: 'A light, airy mousse fusing local mangoes with aromatic spices.',
-    category: 'Dessert',
-    tags: ['Fusion', 'Vegetarian'],
-    image: 'https://picsum.photos/id/488/400/300',
-    isChefSpecial: true
+    name: 'Whole Mutton Roast',
+    description: 'Exquisite whole roasted mutton, perfect for grand centerpieces.',
+    category: 'Main',
+    tags: ['Exclusive', 'Premium', 'Roast'],
+    image: 'https://i.ibb.co.com/Z164cZG3/whole-mutton.jpg',
+    isChefSpecial: false,
+    width: 1600,
+    height: 1200
   }
 ];
 
 export const PACKAGES: MenuPackage[] = [
   {
     id: '601',
-    name: 'REGULAR PACKAGE',
+    name: 'Regular Package (Plain Polao)',
     pricePerHead: 800.00,
     items: [
       'Plain Polao',
@@ -76,11 +127,14 @@ export const PACKAGES: MenuPackage[] = [
       'Borhani / Soft Drinks (250 ml)',
       'Mineral Water'
     ],
-    style: 'Buffet'
+    style: 'Royal Service',
+    image: 'https://shimanto.x-grouprestaurant.com/uploads/429965dc8c33dae64770d669d4d2669b.jpg',
+    width: 750,
+    height: 500
   },
   {
     id: '602',
-    name: 'Motor Shuti Polao',
+    name: 'Motor Shuti Polao Menu',
     pricePerHead: 825.00,
     items: [
       'Motor Shuti Polao',
@@ -93,7 +147,10 @@ export const PACKAGES: MenuPackage[] = [
       'Borhani / Soft Drinks (250 ml)',
       'Mineral Water'
     ],
-    style: 'Buffet'
+    style: 'Royal Service',
+    image: 'https://i.ibb.co.com/SXFwdNYM/motor.jpg',
+    width: 1600,
+    height: 1600
   },
   {
     id: '603',
@@ -110,7 +167,10 @@ export const PACKAGES: MenuPackage[] = [
       'Borhani / Soft Drinks ( 250 ml)',
       'Mineral Water'
     ],
-    style: 'Buffet'
+    style: 'Royal Service',
+    image: 'https://i.ibb.co.com/rfvjmm6L/Shimanto-Special-Saffron-Polao-1.jpg',
+    width: 1599,
+    height: 1166
   },
   {
     id: '604',
@@ -127,7 +187,10 @@ export const PACKAGES: MenuPackage[] = [
       'Special Firnee',
       'Mineral Water'
     ],
-    style: 'Plated'
+    style: 'Plated',
+    image: 'https://i.ibb.co.com/XxQ1VWPk/Shahi-Morog-Polao.jpg',
+    width: 1600,
+    height: 1064
   },
   {
     id: '605',
@@ -144,7 +207,10 @@ export const PACKAGES: MenuPackage[] = [
       'Borhani / Soft Drinks ( 250 ml)',
       'Mineral Water'
     ],
-    style: 'Plated'
+    style: 'Plated',
+    image: 'https://shimanto.x-grouprestaurant.com/uploads/cd82bd9244c6bc867ced315b4ffeaff1.jpg',
+    width: 258,
+    height: 145
   },
   {
     id: '606',
@@ -161,7 +227,10 @@ export const PACKAGES: MenuPackage[] = [
       'Special Jorda',
       'Mineral Water'
     ],
-    style: 'Plated'
+    style: 'Plated',
+    image: 'https://shimanto.x-grouprestaurant.com/uploads/1a64c7d90d8040e5b8719df9c3bffe8a.jpg',
+    width: 235,
+    height: 157
   },
   {
     id: '607',
@@ -174,7 +243,10 @@ export const PACKAGES: MenuPackage[] = [
       'Borhani / Soft Drinks ( 250 ml)',
       'Mineral Water'
     ],
-    style: 'Plated'
+    style: 'Plated',
+    image: 'https://shimanto.x-grouprestaurant.com/uploads/32a0be4dbe1698018807546b0df2bf40.png',
+    width: 333,
+    height: 188
   }
 ];
 
@@ -247,17 +319,16 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 export const CERTIFICATIONS: Cert[] = [
-  { title: 'ISO 9001:2015', issuer: 'Quality Management', iconName: 'Award', type: 'venue' },
-  { title: 'Fire Safety A+', issuer: 'Natl Safety Board', iconName: 'ShieldCheck', type: 'venue' },
-  { title: 'HACCP Certified', issuer: 'Food Safety Global', iconName: 'Utensils', type: 'catering' },
-  { title: '100% Halal', issuer: 'Islamic Foundation', iconName: 'CheckCircle', type: 'catering' }
+  { title: 'BSTI Certified', issuer: 'Bangladesh Standards', image: 'https://iconape.com/wp-content/png_logo_vector/bsti-logo.png', type: 'venue', width: 300, height: 213 },
+  { title: 'Halal Certified', issuer: 'Islamic Foundation', image: 'https://images.seeklogo.com/logo-png/37/1/islamic-foundation-bangladesh-halal-logo-png_seeklogo-376753.png', type: 'catering', width: 600, height: 600 },
+  { title: 'Grade A+ Certified', issuer: 'BD Food Safety Authority', image: 'https://bfsa.teletalk.com.bd/images/bfsa_logo.png', type: 'catering', width: 215, height: 232 }
 ];
 
 export const GALLERY_ITEMS: GalleryItem[] = [
-  { id: 'g1', type: 'event', image: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/close-up-people-serving-themselves-fruits-buffet-restaurant_8353-9872_pcsh74.avif', title: 'Grand Ballroom Setup', category: 'Wedding' },
-  { id: 'g2', type: 'culinary', image: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/rich-dinner-tables-covered-with-blue-clothes-sparkling-glass_8353-799_etqpuv.avif', title: 'Live Pasta Station', category: 'Live Cooking' },
-  { id: 'g3', type: 'event', image: 'https://picsum.photos/id/4/800/600', title: 'Corporate Seminar', category: 'Corporate' },
-  { id: 'g4', type: 'culinary', image: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/wedding-bread-served-plate-with-greenery-stands-plates_8353-547_uljxap.jpg', title: 'Plated Scallops', category: 'Fine Dining' },
-  { id: 'g5', type: 'event', image: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/luxurious-dinner-hall-with-large-crystal-chandelier_8353-565_eiup0m.avif', title: 'Garden Reception', category: 'Outdoor' },
-  { id: 'g6', type: 'culinary', image: 'https://picsum.photos/id/488/800/600', title: 'Dessert Symphony', category: 'Dessert' },
+  { id: 'g1', type: 'event', image: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/close-up-people-serving-themselves-fruits-buffet-restaurant_8353-9872_pcsh74.avif', title: 'Grand Ballroom Setup', category: 'Wedding', width: 1480, height: 986 },
+  { id: 'g2', type: 'culinary', image: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/rich-dinner-tables-covered-with-blue-clothes-sparkling-glass_8353-799_etqpuv.avif', title: 'Live Pasta Station', category: 'Live Cooking', width: 1480, height: 986 },
+  { id: 'g3', type: 'event', image: 'https://picsum.photos/id/4/800/600', title: 'Corporate Seminar', category: 'Corporate', width: 800, height: 600 },
+  { id: 'g4', type: 'culinary', image: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/wedding-bread-served-plate-with-greenery-stands-plates_8353-547_uljxap.jpg', title: 'Plated Scallops', category: 'Fine Dining', width: 1480, height: 986 },
+  { id: 'g5', type: 'event', image: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/luxurious-dinner-hall-with-large-crystal-chandelier_8353-565_eiup0m.avif', title: 'Garden Reception', category: 'Outdoor', width: 1480, height: 986 },
+  { id: 'g6', type: 'culinary', image: 'https://picsum.photos/id/488/800/600', title: 'Dessert Symphony', category: 'Dessert', width: 800, height: 600 },
 ];

@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, ChefHat, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Button } from "./Button";
 
 interface Message {
     id: string;
@@ -106,12 +107,14 @@ export const AiChefChat: React.FC = () => {
                                     </p>
                                 </div>
                             </div>
-                            <button
+                            <Button
+                                variant="ghost"
                                 onClick={() => setIsOpen(false)}
-                                className="text-white/80 hover:text-white"
+                                className="text-white/80 hover:text-white p-0 h-auto hover:bg-transparent border-none"
+                                size="sm"
                             >
                                 <X size={20} />
-                            </button>
+                            </Button>
                         </div>
 
                         {/* Messages */}
@@ -157,13 +160,14 @@ export const AiChefChat: React.FC = () => {
                                     onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
                                     onChange={(e) => setInputText(e.target.value)}
                                 />
-                                <button
+                                <Button
                                     onClick={handleSendMessage}
                                     disabled={!inputText.trim()}
-                                    className="w-10 h-10 bg-convention text-white rounded-full flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:bg-convention-dark transition"
+                                    variant="convention"
+                                    className="w-10 h-10 p-0 rounded-full flex items-center justify-center shadow-none"
                                 >
                                     <Send size={16} />
-                                </button>
+                                </Button>
                             </div>
                         </div>
                     </motion.div>
@@ -171,16 +175,13 @@ export const AiChefChat: React.FC = () => {
             </AnimatePresence>
 
             {/* Launcher */}
-            <motion.button
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+            <Button
                 onClick={() => setIsOpen(!isOpen)}
-                className="fixed bottom-6 right-6 w-14 h-14 bg-convention text-white rounded-full shadow-lg flex items-center justify-center z-50 hover:shadow-convention/50 transition"
+                variant="convention"
+                className="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-lg p-0 border-none"
             >
                 {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
-            </motion.button>
+            </Button>
         </>
     );
 };

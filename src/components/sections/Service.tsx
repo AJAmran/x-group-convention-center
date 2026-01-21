@@ -1,45 +1,47 @@
 "use client";
 
 import React from "react";
-import { PenTool, Lightbulb, Music, Shield, Car, Coffee } from "lucide-react";
+import { ClipboardList, Lightbulb, Mic2, ShieldCheck, Car, HeartHandshake } from "lucide-react";
 import { motion } from "framer-motion";
+import { SectionHeader } from "../ui/SectionHeader";
+import { Card } from "../ui/Card";
 
 const SERVICES = [
   {
-    icon: <PenTool size={28} />,
-    title: "Event Planning",
+    icon: <ClipboardList size={28} />,
+    title: "Event Coordination",
     description:
-      "Our certified planners guide you from concept to execution, ensuring every detail is perfect and stress-free.",
+      "Our experienced team assists with scheduling, hall setup, and on-site coordination to keep your event organized and stress-free.",
   },
   {
     icon: <Lightbulb size={28} />,
-    title: "Decor & Styling",
+    title: "Decor & Setup",
     description:
-      "In-house design team creates immersive themes with premium florals, intelligent lighting, and bespoke furniture.",
+      "We support elegant stage arrangements, seating layouts, and tasteful décor options tailored to the nature of your event.",
   },
   {
-    icon: <Music size={28} />,
-    title: "Audio Visual",
+    icon: <Mic2 size={28} />,
+    title: "Sound & Presentation",
     description:
-      "State-of-the-art sound systems, LED walls, and projection mapping managed by our onsite technical directors.",
+      "Reliable sound systems and basic presentation support are available to ensure clear communication throughout your program.",
   },
   {
-    icon: <Shield size={28} />,
-    title: "Security & Safety",
+    icon: <ShieldCheck size={28} />,
+    title: "Safety & Management",
     description:
-      "Comprehensive security protocols, crowd management, and emergency response teams for peace of mind.",
+      "Trained staff help maintain order, manage guest flow, and support a safe, comfortable environment for all attendees.",
   },
   {
     icon: <Car size={28} />,
-    title: "Valet & Logistics",
+    title: "Parking & Access",
     description:
-      "Seamless arrival experience with ample parking, VIP drop-off zones, and professional valet services.",
+      "Convenient parking facilities and easy access within Shimanto Square ensure a smooth arrival and departure experience.",
   },
   {
-    icon: <Coffee size={28} />,
-    title: "Hospitality",
+    icon: <HeartHandshake size={28} />,
+    title: "Guest Services",
     description:
-      "Dedicated concierge, bridal suites, and VIP green rooms ensuring specialized care for your most important guests.",
+      "Dedicated support for hosts and special guests, with attentive service focused on comfort and hospitality.",
   },
 ];
 
@@ -62,24 +64,12 @@ export const Services: React.FC = () => {
   return (
     <section id="services" className="py-20 bg-neutral-50 relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
-          <span className="text-convention font-bold tracking-widest text-sm uppercase">
-            Comprehensive Solutions
-          </span>
-          <h2 className="text-4xl font-serif font-bold text-gray-900 mt-2">
-            Beyond the Venue
-          </h2>
-          <p className="text-gray-600 mt-4 text-lg">
-            We provide end-to-end support services to ensure your event runs
-            smoothly from the first guest arrival to the final farewell.
-          </p>
-        </motion.div>
+        <SectionHeader
+          subtitle="Beyond the Hall"
+          title="End-to-End Event Support"
+          description="We provide essential services and on-site support to help your event flow effortlessly, from arrival to closing."
+          theme="convention"
+        />
 
         <motion.div
           variants={container}
@@ -89,10 +79,10 @@ export const Services: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {SERVICES.map((service, index) => (
-            <motion.div
+            <Card
               key={index}
-              variants={item}
-              className="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 group"
+              animate={true}
+              className="p-8 border-none shadow-sm hover:shadow-xl group"
             >
               <div className="w-14 h-14 bg-convention/10 rounded-full flex items-center justify-center text-convention mb-6 group-hover:bg-convention group-hover:text-white transition-colors duration-300">
                 {service.icon}
@@ -103,7 +93,7 @@ export const Services: React.FC = () => {
               <p className="text-gray-500 leading-relaxed">
                 {service.description}
               </p>
-            </motion.div>
+            </Card>
           ))}
         </motion.div>
       </div>

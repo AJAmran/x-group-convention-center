@@ -1,11 +1,13 @@
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next'
+import { SITE_CONFIG } from '@/constant/config'
 
 export default function robots(): MetadataRoute.Robots {
     return {
         rules: {
-            userAgent: "*",
-            allow: "/",
+            userAgent: '*',
+            allow: '/',
+            disallow: '/private/',
         },
-        sitemap: "https://your-domain.com/sitemap.xml",
-    };
+        sitemap: `${SITE_CONFIG.url}/sitemap.xml`,
+    }
 }

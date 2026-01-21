@@ -6,6 +6,8 @@ export interface Venue {
   image: string;
   description: string;
   suggestedMenuId: string;
+  width?: number;
+  height?: number;
 }
 
 export interface MenuItem {
@@ -16,6 +18,8 @@ export interface MenuItem {
   tags: string[];
   image: string;
   isChefSpecial: boolean;
+  width?: number;
+  height?: number;
 }
 
 export interface MenuPackage {
@@ -24,7 +28,10 @@ export interface MenuPackage {
   description?: string;
   pricePerHead: number;
   items: string[]; // List of items in the package
-  style?: "Buffet" | "Plated" | "Family Style";
+  style?: "Plated" | "Family Style" | "Royal Service";
+  image?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface AdditionalItem {
@@ -51,8 +58,11 @@ export interface Testimonial {
 export interface Cert {
   title: string;
   issuer: string;
-  iconName: string;
+  iconName?: string;
+  image?: string;
   type: "venue" | "catering";
+  width?: number;
+  height?: number;
 }
 
 export interface GalleryItem {
@@ -61,4 +71,19 @@ export interface GalleryItem {
   image: string;
   title: string;
   category: string;
+  width?: number;
+  height?: number;
+}
+
+export interface HeroSlide {
+  id: number;
+  bgImage: string;
+  subtitle: string;
+  title: string;
+  desc: string;
+  theme: 'convention' | 'catering' | 'unified';
+  ctaPrimary: string;
+  ctaSecondary: string;
+  width?: number;
+  height?: number;
 }

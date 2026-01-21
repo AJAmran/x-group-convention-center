@@ -1,35 +1,43 @@
-import React from "react";
+import Link from "next/link";
 import { MENU_ITEMS } from "@/constant/constants";
-import { ChefHat, QrCode } from "lucide-react";
+import { ChefHat, QrCode, ArrowRight } from "lucide-react";
+import { Button } from "../ui/Button";
+import { SectionHeader } from "../ui/SectionHeader";
+import { Card } from "../ui/Card";
 
 export const MenuShowcase: React.FC = () => {
   return (
     <section id="culinary" className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-          <div>
-            <span className="text-catering font-bold tracking-widest text-sm uppercase">
-              The Palette
-            </span>
-            <h2 className="text-4xl font-serif font-bold text-gray-900 mt-2">
-              Signature Creations
-            </h2>
-          </div>
-          <a href="/menu" className="hidden md:flex items-center gap-2 text-convention font-medium hover:text-convention-dark transition">
-            View All Menus <ArrowRightIcon />
-          </a>
+          <SectionHeader
+            subtitle="The Palette"
+            title="Signature Creations"
+            alignment="left"
+            theme="convention"
+            className="mb-0"
+          />
+          <Link href="/menu" className="mb-6 md:mb-0">
+            <Button variant="ghost" className="hidden md:inline-flex items-center gap-2 text-convention font-medium hover:text-convention-dark hover:bg-transparent">
+              View All Menus <ArrowRight size={20} />
+            </Button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {MENU_ITEMS.map((item) => (
-            <div
+          {MENU_ITEMS.slice(0, 3).map((item) => (
+            <Card
               key={item.id}
-              className="group relative rounded-xl overflow-hidden cursor-pointer"
+              className="group relative cursor-pointer border-none shadow-md"
             >
-              <div className="aspect-w-4 aspect-h-3 h-80">
+              <div className="aspect-w-4 aspect-h-3 h-80 overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.name}
+                  title={item.name}
+                  width={item.width || 800}
+                  height={item.height || 600}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
@@ -38,7 +46,7 @@ export const MenuShowcase: React.FC = () => {
 
               <div className="absolute bottom-0 left-0 p-6 w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                 {item.isChefSpecial && (
-                  <span className="inline-flex items-center gap-1 bg-gold text-black text-xs font-bold px-2 py-0.5 rounded mb-2">
+                  <span className="inline-flex items-center gap-1 bg-gold text-white text-xs font-bold px-2 py-0.5 rounded mb-2 shadow-sm">
                     <ChefHat size={12} /> Chef&apos;s Special
                   </span>
                 )}
@@ -53,55 +61,23 @@ export const MenuShowcase: React.FC = () => {
                     {item.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[10px] text-white border border-white/30 px-2 py-1 rounded-full"
+                        className="text-[10px] text-white border border-white/30 px-2 py-1 rounded-full bg-white/10 backdrop-blur-sm"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <div className="bg-white p-1 rounded">
-                    <QrCode size={16} className="text-black" />
+                  <div className="bg-white/20 backdrop-blur-sm p-1 rounded border border-white/20">
+                    <QrCode size={16} className="text-white" />
                   </div>
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
-
-          {/* Promo Card */}
-          <div className="bg-convention-light rounded-xl p-8 flex flex-col justify-center items-center text-center text-white relative overflow-hidden">
-            <div className="absolute -right-10 -top-10 text-white/10">
-              <ChefHat size={200} />
-            </div>
-            <h3 className="text-2xl font-serif font-bold relative z-10 mb-4">
-              Customize Your Menu
-            </h3>
-            <p className="text-blue-100 relative z-10 mb-6">
-              Work directly with Executive Chef Rahman to design a menu that
-              tells your story.
-            </p>
-            <button className="bg-white text-convention font-bold px-6 py-2 rounded-full hover:bg-blue-50 transition relative z-10">
-              Start Designing
-            </button>
-          </div>
         </div>
       </div>
     </section>
   );
 };
 
-const ArrowRightIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <line x1="5" y1="12" x2="19" y2="12"></line>
-    <polyline points="12 5 19 12 12 19"></polyline>
-  </svg>
-);
+
