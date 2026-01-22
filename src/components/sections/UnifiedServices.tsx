@@ -6,6 +6,7 @@ import { ArrowRight, Users, Utensils, Star, CheckCircle, Maximize } from 'lucide
 import { PACKAGES, VENUES } from '@/constant/constants';
 import { SITE_CONFIG } from '@/constant/config';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '../ui/Button';
 import { SectionHeader } from '../ui/SectionHeader';
 import { Card } from '../ui/Card';
@@ -68,16 +69,15 @@ export const UnifiedServices: React.FC = () => {
               if (!isMultiVenue) {
                 // Single Venue Professional Layout (Horizontal)
                 return (
-                  <Card className="flex flex-col md:flex-row hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
-                    <div className="md:w-1/2 relative h-64 md:h-auto">
-                      <img
+                  <Card key={venue.id} className="flex flex-col md:flex-row hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden">
+                    <div className="md:w-1/2 relative h-64 md:h-[500px]">
+                      <Image
                         src={venue.image}
                         alt={venue.name}
                         title={venue.name}
-                        width={venue.width || 1200}
-                        height={venue.height || 800}
-                        loading="lazy"
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8 md:hidden">
                         <h3 className="text-2xl font-serif font-bold text-white">{venue.name}</h3>
@@ -133,22 +133,21 @@ export const UnifiedServices: React.FC = () => {
 
               // Multiple Venue Grid Layout (Existing Style)
               return (
-                <Card key={venue.id} className="relative group">
+                <Card key={venue.id} className="relative group overflow-hidden">
                   {/* Badge */}
-                  <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur text-convention-dark px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                  <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur text-convention-dark px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-sm">
                     <Users size={12} /> {venue.capacity} Guests
                   </div>
 
                   {/* Image */}
                   <div className="h-64 overflow-hidden relative">
-                    <img
+                    <Image
                       src={venue.image}
                       alt={venue.name}
                       title={venue.name}
-                      width={venue.width || 1200}
-                      height={venue.height || 800}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-convention/0 group-hover:bg-convention/20 transition-colors duration-300"></div>
                   </div>
@@ -173,7 +172,7 @@ export const UnifiedServices: React.FC = () => {
             })
           ) : (
             PACKAGES.slice(0, 3).map((pkg) => (
-              <Card key={pkg.id} className="relative group flex flex-col">
+              <Card key={pkg.id} className="relative group flex flex-col overflow-hidden">
                 {/* Badge */}
                 <div className="absolute top-4 right-4 z-10 bg-convention text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
                   ৳{pkg.pricePerHead} / head
@@ -181,14 +180,13 @@ export const UnifiedServices: React.FC = () => {
 
                 <div className="h-48 bg-gray-100 relative overflow-hidden">
                   {/* Package Image */}
-                  <img
-                    src={pkg.image}
+                  <Image
+                    src={pkg.image || ''}
                     alt={pkg.name}
                     title={pkg.name}
-                    width={pkg.width || 800}
-                    height={pkg.height || 600}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-6">
                     <span className="text-white font-serif text-2xl font-bold">{pkg.name}</span>
@@ -214,8 +212,8 @@ export const UnifiedServices: React.FC = () => {
                       <span>{pkg.style} Service</span>
                     </div>
                     <div className="flex items-center gap-3 text-sm text-gray-700">
-                      <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold-dark">
-                        <Star size={16} className="text-gold" />
+                      <div className="w-8 h-8 rounded-full bg-silver/10 flex items-center justify-center text-silver-dark">
+                        <Star size={16} className="text-silver" />
                       </div>
                       <span>Chef Consultation Included</span>
                     </div>

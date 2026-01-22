@@ -17,7 +17,7 @@ import { SITE_CONFIG } from "@/constant/config";
 
 export const metadata: Metadata = {
   title: `${SITE_CONFIG.name} | Dhaka's Premier Wedding & Event Venue`,
-  description: "Experience grand events, luxury weddings, and professional catering at Shimanto Convention Center. Located in Dhanmondi, Dhaka. Book your masterpiece event today.",
+  description: SITE_CONFIG.description,
   alternates: {
     canonical: '/',
   },

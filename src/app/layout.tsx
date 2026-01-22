@@ -24,17 +24,7 @@ export const metadata: Metadata = {
     default: `${SITE_CONFIG.name} | Premium Event & Wedding Venue in Dhaka`,
   },
   description: SITE_CONFIG.description,
-  keywords: [
-    "Shimanto Convention Center",
-    "Wedding Venue Dhaka",
-    "Convention Center Dhanmondi",
-    "Event Spaces Dhaka",
-    "Catering Services Dhaka",
-    "Birthday Party Venue",
-    "Corporate Event Venue",
-    "X-Group Restaurant",
-    "Luxury Wedding Hall"
-  ],
+  keywords: SITE_CONFIG.keywords,
   authors: [{ name: SITE_CONFIG.name }],
   creator: SITE_CONFIG.name,
   publisher: SITE_CONFIG.name,
@@ -98,8 +88,8 @@ const jsonLd = {
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 23.7383, // Approximate for Dhanmondi/Shimanto Square
-    "longitude": 90.3754
+    "latitude": SITE_CONFIG.geo.latitude,
+    "longitude": SITE_CONFIG.geo.longitude
   },
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",

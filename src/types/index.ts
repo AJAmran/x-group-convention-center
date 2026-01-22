@@ -6,6 +6,7 @@ export interface Venue {
   image: string;
   description: string;
   suggestedMenuId: string;
+  size?: string;
   width?: number;
   height?: number;
 }

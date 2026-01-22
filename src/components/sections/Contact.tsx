@@ -49,7 +49,7 @@ export const Contact: React.FC = () => {
                             </div>
 
                             <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-gold flex-shrink-0">
+                                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-silver flex-shrink-0">
                                     <MapPin size={24} />
                                 </div>
                                 <div>

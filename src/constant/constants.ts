@@ -21,7 +21,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     desc: 'From elegant weddings to cherished milestones, Shimanto Convention Center brings tradition, warmth, and grace to every celebration.',
     theme: 'catering',
     ctaPrimary: 'View Menus',
-    ctaSecondary: 'Meet the Chefs',
+    ctaSecondary: 'Book a Date',
     width: 1200,
     height: 800
   },
@@ -32,12 +32,13 @@ export const HERO_SLIDES: HeroSlide[] = [
     title: 'Designed for Focus\nBuilt to Impress',
     desc: 'Host conferences, seminars, and corporate programs in a polished environment where clarity, comfort, and professionalism lead the way.',
     theme: 'unified',
-    ctaPrimary: 'Plan Your Event',
-    ctaSecondary: 'Watch Video',
+    ctaPrimary: 'Make a Reservation',
+    ctaSecondary: 'Get in Touch',
     width: 1200,
     height: 800
   }
 ];
+
 
 export const VENUES: Venue[] = [
   {
@@ -326,7 +327,7 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const CERTIFICATIONS: Cert[] = [
   { title: 'BSTI Certified', issuer: 'Bangladesh Standards', image: 'https://iconape.com/wp-content/png_logo_vector/bsti-logo.png', type: 'venue', width: 300, height: 213 },
-  { title: 'Halal Certified', issuer: 'Islamic Foundation', image: 'https://images.seeklogo.com/logo-png/37/1/islamic-foundation-bangladesh-halal-logo-png_seeklogo-376753.png', type: 'catering', width: 600, height: 600 },
+  { title: 'Halal Certified', issuer: 'Islamic Foundation', image: 'https://ik.imagekit.io/4iqsux69yt/shimanto%20convention%20images/islamic-foundation-bangladesh-halal-logo-png_seeklogo-376753.png', type: 'catering', width: 600, height: 600 },
   { title: 'Grade A+ Certified', issuer: 'BD Food Safety Authority', image: 'https://bfsa.teletalk.com.bd/images/bfsa_logo.png', type: 'catering', width: 215, height: 232 }
 ];
 
@@ -338,3 +339,73 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   { id: 'g5', type: 'event', image: 'https://ik.imagekit.io/4iqsux69yt/RGF06525.jpg', title: 'Garden Reception', category: 'Outdoor', width: 1480, height: 986 },
   { id: 'g6', type: 'culinary', image: 'https://ik.imagekit.io/4iqsux69yt/RGF06600.jpg', title: 'Dessert Symphony', category: 'Dessert', width: 800, height: 600 },
 ];
+
+export const SERVICES = [
+  {
+    title: "Event Coordination",
+    description:
+      "Our experienced team assists with scheduling, hall setup, and on-site coordination to keep your event organized and stress-free.",
+    iconName: "ClipboardList"
+  },
+  {
+    title: "Decor & Setup",
+    description:
+      "We support elegant stage arrangements, seating layouts, and tasteful décor options tailored to the nature of your event.",
+    iconName: "Lightbulb"
+  },
+  {
+    title: "Sound & Presentation",
+    description:
+      "Reliable sound systems and basic presentation support are available to ensure clear communication throughout your program.",
+    iconName: "Mic2"
+  },
+  {
+    title: "Safety & Management",
+    description:
+      "Trained staff help maintain order, manage guest flow, and support a safe, comfortable environment for all attendees.",
+    iconName: "ShieldCheck"
+  },
+  {
+    title: "Parking & Access",
+    description:
+      "Convenient parking facilities and easy access within Shimanto Square ensure a smooth arrival and departure experience.",
+    iconName: "Car"
+  },
+  {
+    title: "Guest Services",
+    description:
+      "Dedicated support for hosts and special guests, with attentive service focused on comfort and hospitality.",
+    iconName: "HeartHandshake"
+  },
+];
+
+export const APP_FEATURES = [
+  'Exclusive "Chef at Home" Menu',
+  'Real-time Order Tracking',
+  'Secure Contactless Delivery'
+];
+
+export const TRUST_HUB_CONTENT = {
+  subtitle: "Trust & Excellence",
+  title: "Built on a Legacy of Quality",
+  description: "Shimanto Convention Center is recognized for its architectural safety and culinary hygiene standards, ensuring your events are both grand and secure.",
+  facility: {
+    title: "Facility Excellence",
+    description: "World-class safety standards and architectural certifications tailored for large-scale gatherings."
+  },
+  culinary: {
+    title: "Culinary Mastery",
+    description: "Certified hygiene protocols and award-winning chefs ensuring every meal is safe and spectacular."
+  }
+};
+
+export const PAGE_HEADERS = {
+  about: 'https://shimanto.x-grouprestaurant.com/uploads/0a1fa9f07cbdf936a7c69fad306091dc.jpg',
+  venues: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/rich-dinner-tables-covered-with-blue-clothes-sparkling-glass_8353-799_etqpuv.avif',
+  menu: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/rich-dinner-tables-covered-with-blue-clothes-sparkling-glass_8353-799_etqpuv.avif',
+  gallery: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/wedding-bread-served-plate-with-greenery-stands-plates_8353-547_uljxap.jpg',
+  reservation: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764830482/2151481477_dro0u9.jpg',
+  contact: 'https://shimanto.x-grouprestaurant.com/uploads/48a95b0f04a451441831746f62684056.jpg',
+  terms: 'https://shimanto.x-grouprestaurant.com/uploads/0a1fa9f07cbdf936a7c69fad306091dc.jpg',
+  refund: 'https://shimanto.x-grouprestaurant.com/uploads/48a95b0f04a451441831746f62684056.jpg'
+};

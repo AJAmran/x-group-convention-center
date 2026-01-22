@@ -4,6 +4,8 @@ import { Navigation } from '@/components/layout/Navigation';
 import { Contact } from '@/components/sections/Contact';
 import { motion } from 'framer-motion';
 import { MapPin } from 'lucide-react';
+import { PAGE_HEADERS } from '@/constant/constants';
+import Image from 'next/image';
 
 export default function ContactPage() {
     return (
@@ -12,7 +14,14 @@ export default function ContactPage() {
 
             {/* Header */}
             <section className="relative pt-32 pb-20 bg-gray-900 text-white overflow-hidden">
-                <div className="absolute inset-0 bg-convention-dark opacity-90"></div>
+                <Image
+                    src={PAGE_HEADERS.contact}
+                    alt="Contact"
+                    fill
+                    className="object-cover opacity-40"
+                    priority
+                />
+                <div className="absolute inset-0 bg-convention-dark opacity-60"></div>
                 <div className="container mx-auto px-4 relative z-10 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -20,7 +29,7 @@ export default function ContactPage() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 px-4 py-1.5 rounded-full mb-6">
-                            <MapPin size={16} className="text-gold" />
+                            <MapPin size={16} className="text-silver" />
                             <span className="text-xs font-bold tracking-widest uppercase">Visit Us</span>
                         </div>
                         <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6">Get in Touch</h1>

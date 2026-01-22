@@ -10,13 +10,12 @@ import {
   MapPin,
   Phone,
   Heart,
-  ArrowRight,
   ExternalLink,
   ChevronRight
 } from 'lucide-react';
 import { SITE_CONFIG } from '@/constant/config';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -50,16 +49,19 @@ export const Footer: React.FC = () => {
           {/* Brand Column */}
           <div className="lg:col-span-4 space-y-8">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-convention to-convention-dark rounded-2xl flex items-center justify-center text-white font-serif font-bold text-2xl shadow-lg border border-white/20">
-                {SITE_CONFIG.shortName.charAt(0)}
-              </div>
-              <div>
-                <span className="font-serif text-2xl font-bold tracking-tight block leading-none">{SITE_CONFIG.shortName}</span>
-                <span className="text-[10px] text-gold uppercase tracking-[0.3em] font-bold">Convention & Catering</span>
-              </div>
+              <Link href="/" className="relative h-20 w-56 transition-transform hover:scale-105 bg-white/95 p-3 rounded-2xl shadow-xl backdrop-blur-sm group">
+                <Image
+                  src={SITE_CONFIG.logo}
+                  alt={SITE_CONFIG.name}
+                  title={SITE_CONFIG.name}
+                  fill
+                  className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 300px"
+                />
+              </Link>
             </div>
 
-            <p className="text-gray-400 text-base leading-relaxed max-w-sm">
+            <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
               Where heritage meets hospitality. Experience Bangladesh&apos;s most distinguished setting for weddings, corporate galas, and culinary excellence.
             </p>
 
@@ -143,12 +145,12 @@ export const Footer: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-2xl bg-gold/20 flex items-center justify-center text-gold flex-shrink-0">
+                <div className="w-10 h-10 rounded-2xl bg-silver/20 flex items-center justify-center text-silver flex-shrink-0">
                   <Phone size={20} />
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Make a Call</p>
-                  <a href={`tel:${SITE_CONFIG.contact.phone[0]}`} className="text-sm text-gray-300 hover:text-gold transition-colors font-medium">
+                  <a href={`tel:${SITE_CONFIG.contact.phone[0]}`} className="text-sm text-gray-300 hover:text-silver transition-colors font-medium">
                     {SITE_CONFIG.contact.phone[0]}
                   </a>
                 </div>
@@ -160,7 +162,7 @@ export const Footer: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-1">Email Us</p>
-                  <a href={`mailto:${SITE_CONFIG.contact.email}`} className="text-sm text-gray-300 hover:text-gold transition-colors font-medium">
+                  <a href={`mailto:${SITE_CONFIG.contact.email}`} className="text-sm text-gray-300 hover:text-silver transition-colors font-medium">
                     {SITE_CONFIG.contact.email}
                   </a>
                 </div>
@@ -173,7 +175,7 @@ export const Footer: React.FC = () => {
         {/* Enhanced Payment Section */}
         <div className="mb-16">
           <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-convention/50 to-gold/50 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-convention/50 to-silver/50 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
             <div className="relative bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex flex-col items-center">
               <div className="flex items-center gap-2 mb-4">
                 <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-gray-600"></div>
@@ -181,13 +183,12 @@ export const Footer: React.FC = () => {
                 <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-gray-600"></div>
               </div>
               <div className="w-full container mx-auto overflow-hidden rounded-xl bg-white p-2 md:p-4 shadow-inner">
-                <img
+                <Image
                   src="https://shimanto.x-grouprestaurant.com/uploads/SSLCommerz-Pay-With-logo-All-Size-03.png"
                   alt="SSLCommerz Certified Trusted Provider"
                   title="SSLCommerz Certified Trusted Provider"
                   width={4162}
                   height={158}
-                  loading="lazy"
                   className="w-full h-auto object-contain scale-100 md:scale-[1.02] transform transition-transform"
                 />
               </div>

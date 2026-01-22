@@ -4,6 +4,8 @@ import { Navigation } from '@/components/layout/Navigation';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Card } from '@/components/ui/Card';
 import { RefreshCw, XCircle, AlertCircle, Calendar, CreditCard } from 'lucide-react';
+import { PAGE_HEADERS } from '@/constant/constants';
+import Image from 'next/image';
 
 export default function RefundPolicyPage() {
     return (
@@ -12,7 +14,13 @@ export default function RefundPolicyPage() {
 
             {/* Header */}
             <section className="relative pt-32 pb-20 bg-gray-900 text-white overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://shimanto.x-grouprestaurant.com/uploads/48a95b0f04a451441831746f62684056.jpg')] bg-cover bg-center opacity-20"></div>
+                <Image
+                    src={PAGE_HEADERS.refund}
+                    alt="Refund Policy"
+                    fill
+                    className="object-cover opacity-20"
+                    priority
+                />
                 <div className="container mx-auto px-4 relative z-10 text-center">
                     <SectionHeader
                         title="Refund and Return Policy"
@@ -77,7 +85,7 @@ export default function RefundPolicyPage() {
                                 </div>
 
                                 <div className="flex gap-6">
-                                    <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center text-gold-dark flex-shrink-0">
+                                    <div className="w-12 h-12 rounded-xl bg-silver/10 flex items-center justify-center text-silver flex-shrink-0">
                                         <Calendar size={24} />
                                     </div>
                                     <div>

@@ -1,7 +1,8 @@
 import React from "react";
-
+import Link from 'next/link';
+import Image from 'next/image';
 import { ShieldCheck, Award, CheckCircle, Utensils } from "lucide-react";
-import { CERTIFICATIONS } from "@/constant/constants";
+import { CERTIFICATIONS, TRUST_HUB_CONTENT } from "@/constant/constants";
 import { SITE_CONFIG } from "@/constant/config";
 import { Card } from "../ui/Card";
 import { SectionHeader } from "../ui/SectionHeader";
@@ -36,21 +37,20 @@ export const TrustHub: React.FC = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          subtitle="Trust & Excellence"
-          title="Built on a Legacy of Quality"
-          description="Shimanto Convention Center is recognized for its architectural safety and culinary hygiene standards, ensuring your events are both grand and secure."
+          subtitle={TRUST_HUB_CONTENT.subtitle}
+          title={TRUST_HUB_CONTENT.title}
+          description={TRUST_HUB_CONTENT.description}
           theme="light"
           className="mb-16"
         />
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           {/* LEFT — Venue Section */}
           <div className="md:w-1/3 text-center md:text-left">
-            <h3 className="text-gold font-serif text-2xl font-bold mb-2">
-              Facility Excellence
+            <h3 className="text-silver font-serif text-2xl font-bold mb-2">
+              {TRUST_HUB_CONTENT.facility.title}
             </h3>
             <p className="text-gray-300 text-sm mb-6">
-              World-class safety standards and architectural certifications
-              tailored for large-scale gatherings.
+              {TRUST_HUB_CONTENT.facility.description}
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
@@ -61,19 +61,20 @@ export const TrustHub: React.FC = () => {
                     className="bg-white/5 backdrop-blur-xl border border-white/10 p-5 rounded-2xl flex items-center gap-4 w-full sm:w-auto hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
                     hoverEffect={true}
                   >
-                    <div className="text-blue-300 flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
+                    <div className="flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
                       {cert.image ? (
-                        <img
-                          src={cert.image}
-                          alt={cert.title}
-                          title={cert.title}
-                          width={cert.width || 100}
-                          height={cert.height || 100}
-                          loading="lazy"
-                          className="h-10 w-auto object-contain brightness-110"
-                        />
+                        <div className="bg-white p-1 rounded-lg shadow-inner">
+                          <Image
+                            src={cert.image}
+                            alt={cert.title}
+                            title={cert.title}
+                            width={cert.width || 100}
+                            height={cert.height || 100}
+                            className="h-10 w-auto object-contain"
+                          />
+                        </div>
                       ) : (
-                        cert.iconName && iconMap[cert.iconName]
+                        cert.iconName && <div className="text-blue-300">{iconMap[cert.iconName]}</div>
                       )}
                     </div>
                     <div className="text-left">
@@ -91,12 +92,12 @@ export const TrustHub: React.FC = () => {
           {/* CENTER — Dynamic Years */}
           <div className="md:w-1/3 flex justify-center py-8 md:py-0">
             <div className="relative group">
-              <div className="absolute -inset-4 bg-gold/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <div className="w-56 h-56 rounded-full border-4 border-gold/30 flex flex-col items-center justify-center bg-gradient-to-br from-convention to-convention-dark text-white shadow-2xl relative z-10 transition-transform duration-500 group-hover:scale-105">
+              <div className="absolute -inset-4 bg-silver/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              <div className="w-56 h-56 rounded-full border-4 border-silver/30 flex flex-col items-center justify-center bg-gradient-to-br from-convention to-convention-dark text-white shadow-2xl relative z-10 transition-transform duration-500 group-hover:scale-105">
                 <span className="text-6xl font-serif font-bold block mb-1">
                   {years}+
                 </span>
-                <span className="text-[10px] uppercase tracking-widest text-center px-4 font-bold text-gold">
+                <span className="text-[10px] uppercase tracking-widest text-center px-4 font-bold text-silver">
                   Years of <br /> Integrated Service
                 </span>
               </div>
@@ -106,11 +107,10 @@ export const TrustHub: React.FC = () => {
           {/* RIGHT — Catering Section */}
           <div className="md:w-1/3 text-center md:text-right">
             <h3 className="text-catering-light font-serif text-2xl font-bold mb-2">
-              Culinary Mastery
+              {TRUST_HUB_CONTENT.culinary.title}
             </h3>
             <p className="text-gray-300 text-sm mb-6 leading-relaxed">
-              Certified hygiene protocols and award-winning chefs ensuring every
-              meal is safe and spectacular.
+              {TRUST_HUB_CONTENT.culinary.description}
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center md:justify-end">
@@ -121,19 +121,20 @@ export const TrustHub: React.FC = () => {
                     className="bg-white/5 backdrop-blur-xl border border-white/10 p-5 rounded-2xl flex items-center gap-4 w-full sm:w-auto flex-row-reverse text-right hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
                     hoverEffect={true}
                   >
-                    <div className="text-red-300 flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
+                    <div className="flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
                       {cert.image ? (
-                        <img
-                          src={cert.image}
-                          alt={cert.title}
-                          title={cert.title}
-                          width={cert.width || 100}
-                          height={cert.height || 100}
-                          loading="lazy"
-                          className="h-10 w-auto object-contain brightness-110"
-                        />
+                        <div className="bg-white p-1 rounded-lg shadow-inner">
+                          <Image
+                            src={cert.image}
+                            alt={cert.title}
+                            title={cert.title}
+                            width={cert.width || 100}
+                            height={cert.height || 100}
+                            className="h-10 w-auto object-contain"
+                          />
+                        </div>
                       ) : (
-                        cert.iconName && iconMap[cert.iconName]
+                        cert.iconName && <div className="text-red-300">{iconMap[cert.iconName]}</div>
                       )}
                     </div>
                     <div>

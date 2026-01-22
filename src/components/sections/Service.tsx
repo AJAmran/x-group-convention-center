@@ -5,45 +5,16 @@ import { ClipboardList, Lightbulb, Mic2, ShieldCheck, Car, HeartHandshake } from
 import { motion } from "framer-motion";
 import { SectionHeader } from "../ui/SectionHeader";
 import { Card } from "../ui/Card";
+import { SERVICES } from "@/constant/constants";
 
-const SERVICES = [
-  {
-    icon: <ClipboardList size={28} />,
-    title: "Event Coordination",
-    description:
-      "Our experienced team assists with scheduling, hall setup, and on-site coordination to keep your event organized and stress-free.",
-  },
-  {
-    icon: <Lightbulb size={28} />,
-    title: "Decor & Setup",
-    description:
-      "We support elegant stage arrangements, seating layouts, and tasteful décor options tailored to the nature of your event.",
-  },
-  {
-    icon: <Mic2 size={28} />,
-    title: "Sound & Presentation",
-    description:
-      "Reliable sound systems and basic presentation support are available to ensure clear communication throughout your program.",
-  },
-  {
-    icon: <ShieldCheck size={28} />,
-    title: "Safety & Management",
-    description:
-      "Trained staff help maintain order, manage guest flow, and support a safe, comfortable environment for all attendees.",
-  },
-  {
-    icon: <Car size={28} />,
-    title: "Parking & Access",
-    description:
-      "Convenient parking facilities and easy access within Shimanto Square ensure a smooth arrival and departure experience.",
-  },
-  {
-    icon: <HeartHandshake size={28} />,
-    title: "Guest Services",
-    description:
-      "Dedicated support for hosts and special guests, with attentive service focused on comfort and hospitality.",
-  },
-];
+const ICON_MAP: Record<string, React.ReactNode> = {
+  ClipboardList: <ClipboardList size={28} />,
+  Lightbulb: <Lightbulb size={28} />,
+  Mic2: <Mic2 size={28} />,
+  ShieldCheck: <ShieldCheck size={28} />,
+  Car: <Car size={28} />,
+  HeartHandshake: <HeartHandshake size={28} />,
+};
 
 const container = {
   hidden: { opacity: 0 },
@@ -85,7 +56,7 @@ export const Services: React.FC = () => {
               className="p-8 border-none shadow-sm hover:shadow-xl group"
             >
               <div className="w-14 h-14 bg-convention/10 rounded-full flex items-center justify-center text-convention mb-6 group-hover:bg-convention group-hover:text-white transition-colors duration-300">
-                {service.icon}
+                {service.iconName && ICON_MAP[service.iconName]}
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3 font-serif">
                 {service.title}

@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Menu, X, Calendar, ChefHat, MapPin, Image, Phone, Home, Info } from 'lucide-react';
+import { Menu, X, Calendar, ChefHat, MapPin, Image as ImageIcon, Phone, Home, Info } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { SITE_CONFIG } from '@/constant/config';
 import { Button } from '../ui/Button';
+import Image from 'next/image';
 
 export const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,13 +21,14 @@ export const Navigation: React.FC = () => {
 
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center cursor-pointer">
-            <img
-              src="https://shimanto.x-grouprestaurant.com/uploads/ff6c6ecade66e52f2d2992fa7cab9763.png"
-              alt="Shimanto Convention Center"
-              title="Shimanto Convention Center Logo"
-              width={493}
-              height={174}
+            <Image
+              src={SITE_CONFIG.logo}
+              alt={SITE_CONFIG.name}
+              title={SITE_CONFIG.name}
+              width={180}
+              height={56}
               className="h-14 md:h-16 w-auto object-contain"
+              priority
             />
           </Link>
 
@@ -73,7 +75,7 @@ export const Navigation: React.FC = () => {
               <MobileNavLink href="/venues" icon={<MapPin size={18} />} label="Venues" onClick={() => setIsOpen(false)} />
             )}
             <MobileNavLink href="/menu" icon={<ChefHat size={18} />} label="Menu & Catering" onClick={() => setIsOpen(false)} />
-            <MobileNavLink href="/gallery" icon={<Image size={18} />} label="Gallery" onClick={() => setIsOpen(false)} />
+            <MobileNavLink href="/gallery" icon={<ImageIcon size={18} />} label="Gallery" onClick={() => setIsOpen(false)} />
             <MobileNavLink href="/reservation" icon={<Calendar size={18} />} label="Reservation" onClick={() => setIsOpen(false)} />
             <MobileNavLink href="/contact" icon={<Phone size={18} />} label="Contact" onClick={() => setIsOpen(false)} />
 

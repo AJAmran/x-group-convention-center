@@ -6,6 +6,7 @@ import { VENUES, PACKAGES } from "@/constant/constants";
 import { Button } from "../ui/Button";
 import { SectionHeader } from "../ui/SectionHeader";
 import { Card } from "../ui/Card";
+import Image from "next/image";
 
 export const BookingWizard: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -176,11 +177,15 @@ export const BookingWizard: React.FC = () => {
                           : "border-gray-100 hover:border-gray-300"
                           }`}
                       >
-                        <img
-                          src={v.image}
-                          className="w-full h-24 object-cover rounded-md mb-2"
-                          alt={v.name}
-                        />
+                        <div className="relative w-full h-24 mb-2 overflow-hidden rounded-md">
+                          <Image
+                            src={v.image}
+                            alt={v.name}
+                            fill
+                            className="object-cover"
+                            sizes="200px"
+                          />
+                        </div>
                         <p className="font-bold text-sm text-gray-900 leading-tight">
                           {v.name}
                         </p>
@@ -287,14 +292,16 @@ export const BookingWizard: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col gap-3 max-w-xs mx-auto">
-                  <Button className="w-full bg-gold text-black hover:bg-yellow-500 shadow-lg border-none">
+                  <Button className="w-full bg-convention text-white hover:bg-convention-light shadow-lg border-none">
                     Confirm Booking
                   </Button>
-                  <div className="w-full mt-2">
-                    <img
+                  <div className="w-full mt-2 relative aspect-[4162/158]">
+                    <Image
                       src="https://shimanto.x-grouprestaurant.com/uploads/SSLCommerz-Pay-With-logo-All-Size-03.png"
                       alt="Pay Securely"
-                      className="w-full h-auto rounded opacity-90"
+                      fill
+                      className="object-contain rounded opacity-90"
+                      sizes="400px"
                     />
                   </div>
                   <Button

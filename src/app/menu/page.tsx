@@ -1,6 +1,6 @@
 "use client";
 
-import { PACKAGES, ADDITIONAL_ITEMS } from '@/constant/constants';
+import { PACKAGES, ADDITIONAL_ITEMS, PAGE_HEADERS } from '@/constant/constants';
 import { Navigation } from '@/components/layout/Navigation';
 import { ChefHat, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -9,6 +9,8 @@ import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Card } from '@/components/ui/Card';
 import Link from 'next/link';
 
+import Image from 'next/image';
+
 export default function MenuPage() {
     return (
         <div className="bg-white min-h-screen">
@@ -16,7 +18,13 @@ export default function MenuPage() {
 
             {/* Header */}
             <section className="relative pt-32 pb-20 bg-gray-900 text-white overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/rich-dinner-tables-covered-with-blue-clothes-sparkling-glass_8353-799_etqpuv.avif')] bg-cover bg-center opacity-30"></div>
+                <Image
+                    src={PAGE_HEADERS.menu}
+                    alt="Our Menu"
+                    fill
+                    className="object-cover opacity-30"
+                    priority
+                />
                 <div className="container mx-auto px-4 relative z-10 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -24,7 +32,7 @@ export default function MenuPage() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 px-4 py-1.5 rounded-full mb-6">
-                            <ChefHat size={16} className="text-gold" />
+                            <ChefHat size={16} className="text-silver" />
                             <span className="text-xs font-bold tracking-widest uppercase">The Culinary Collection</span>
                         </div>
                         <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6">Our Menu</h1>
@@ -46,17 +54,16 @@ export default function MenuPage() {
                                 animate={true}
                             >
                                 <div className="h-48 relative overflow-hidden">
-                                    <img
-                                        src={pkg.image}
+                                    <Image
+                                        src={pkg.image || ''}
                                         alt={pkg.name}
                                         title={pkg.name}
-                                        width={pkg.width || 800}
-                                        height={pkg.height || 600}
-                                        loading="lazy"
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        fill
+                                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
-                                        <div className="flex justify-between items-center w-full">
+                                        <div className="flex justify-between items-center w-full relative z-10">
                                             <span className="text-white font-serif text-lg font-bold">{pkg.style}</span>
                                             <span className="bg-convention text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
                                                 ৳{pkg.pricePerHead}
@@ -96,7 +103,7 @@ export default function MenuPage() {
 
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center mb-20">
-                        <span className="text-gold font-bold tracking-widest text-xs uppercase mb-3 block">Tailored For Your Celebration</span>
+                        <span className="text-silver font-bold tracking-widest text-xs uppercase mb-3 block">Tailored For Your Celebration</span>
                         <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">Signature Add-ons & Traditional Delicacies</h2>
                         <p className="text-gray-500 max-w-2xl mx-auto text-lg font-light leading-relaxed">
                             Transform your event into a <strong>Royal Feast</strong> with our exclusive selection of premium Bangladeshi delicacies. From grand Whole Roasts to exquisite desserts, perfectly curated to elevate your wedding or corporate gathering.
@@ -112,7 +119,7 @@ export default function MenuPage() {
                                             {item.name}
                                         </h4>
                                         {item.price > 1000 && (
-                                            <span className="text-[10px] font-bold uppercase tracking-wider text-gold bg-gold/10 px-2 py-0.5 rounded-full">Premium</span>
+                                            <span className="text-[10px] font-bold uppercase tracking-wider text-silver bg-silver/10 px-2 py-0.5 rounded-full">Premium</span>
                                         )}
                                     </div>
                                     {/* <span className="text-xs text-gray-300 font-mono">Item {item.id}</span> */}

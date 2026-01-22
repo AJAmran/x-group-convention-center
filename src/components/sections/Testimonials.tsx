@@ -8,6 +8,8 @@ import { Button } from '../ui/Button';
 import { SectionHeader } from '../ui/SectionHeader';
 import { Card } from '../ui/Card';
 
+import Image from 'next/image';
+
 export const Testimonials: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -70,20 +72,21 @@ export const Testimonials: React.FC = () => {
                   <div className="flex flex-col items-center text-center md:text-left gap-4">
                     <div className="relative">
                       <div className="w-24 h-24 md:w-32 md:h-32 rounded-full p-1 bg-gradient-to-br from-convention to-gold">
-                        <img
-                          src={currentTestimonial.image}
-                          alt={currentTestimonial.clientName}
-                          title={currentTestimonial.clientName}
-                          width={100}
-                          height={100}
-                          loading="lazy"
-                          className="w-full h-full rounded-full object-cover border-4 border-white shadow-inner"
-                        />
+                        <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-inner">
+                          <Image
+                            src={currentTestimonial.image || ''}
+                            alt={currentTestimonial.clientName}
+                            title={currentTestimonial.clientName}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 96px, 128px"
+                          />
+                        </div>
                       </div>
                       <div className="absolute -bottom-2 -right-2 bg-white p-2 rounded-full shadow-md">
-                        <div className="flex text-gold">
+                        <div className="flex text-silver">
                           {[...Array(5)].map((_, i) => (
-                            <Star key={i} size={12} fill="currentColor" className="text-gold" />
+                            <Star key={i} size={12} fill="currentColor" className="text-silver" />
                           ))}
                         </div>
                       </div>

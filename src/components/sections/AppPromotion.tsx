@@ -3,6 +3,9 @@ import { CheckCircle, Apple, Play } from 'lucide-react';
 import { SITE_CONFIG } from '@/constant/config';
 import { Button } from '../ui/Button';
 import { SectionHeader } from '../ui/SectionHeader';
+import { APP_FEATURES } from '@/constant/constants';
+
+import Image from 'next/image';
 
 export const AppPromotion: React.FC = () => {
   return (
@@ -25,13 +28,9 @@ export const AppPromotion: React.FC = () => {
             />
 
             <div className="space-y-4">
-              {[
-                'Exclusive "Chef at Home" Menu',
-                'Real-time Order Tracking',
-                'Secure Contactless Delivery'
-              ].map((feature, i) => (
+              {APP_FEATURES.map((feature, i) => (
                 <div key={i} className="flex items-center gap-3">
-                  <CheckCircle className="text-gold" size={24} />
+                  <CheckCircle className="text-silver" size={24} />
                   <span className="font-medium">{feature}</span>
                 </div>
               ))}
@@ -70,14 +69,13 @@ export const AppPromotion: React.FC = () => {
             {/* Phone Mockup */}
             <div className="relative w-[300px] h-[600px] bg-gray-900 rounded-[3rem] border-8 border-gray-800 shadow-2xl overflow-hidden transform rotate-3 hover:rotate-0 transition-transform duration-500">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-6 bg-black rounded-b-xl z-20"></div>
-              <img
-                src="https://i.ibb.co.com/JTPrrLg/Whats-App-Image-2026-01-21-at-3-10-31-PM.jpg"
+              <Image
+                src="https://ik.imagekit.io/4iqsux69yt/shimanto%20convention%20images/WhatsApp%20Image%202026-01-22%20at%205.18.28%20PM%20(1).jpeg"
                 alt="Foodbitebd App Interface"
                 title="Foodbitebd Mobile App Interface"
-                width={717}
-                height={1600}
-                loading="lazy"
-                className="w-full h-full object-cover opacity-80"
+                fill
+                className="object-cover opacity-80"
+                sizes="300px"
               />
 
 

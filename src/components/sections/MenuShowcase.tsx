@@ -1,4 +1,6 @@
+import React from "react";
 import Link from "next/link";
+import Image from 'next/image';
 import { MENU_ITEMS } from "@/constant/constants";
 import { ChefHat, QrCode, ArrowRight } from "lucide-react";
 import { Button } from "../ui/Button";
@@ -30,15 +32,14 @@ export const MenuShowcase: React.FC = () => {
               key={item.id}
               className="group relative cursor-pointer border-none shadow-md"
             >
-              <div className="aspect-w-4 aspect-h-3 h-80 overflow-hidden">
-                <img
+              <div className="relative aspect-w-4 aspect-h-3 h-80 overflow-hidden">
+                <Image
                   src={item.image}
                   alt={item.name}
                   title={item.name}
-                  width={item.width || 800}
-                  height={item.height || 600}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
 
@@ -46,7 +47,7 @@ export const MenuShowcase: React.FC = () => {
 
               <div className="absolute bottom-0 left-0 p-6 w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                 {item.isChefSpecial && (
-                  <span className="inline-flex items-center gap-1 bg-gold text-white text-xs font-bold px-2 py-0.5 rounded mb-2 shadow-sm">
+                  <span className="inline-flex items-center gap-1 bg-silver text-white text-xs font-bold px-2 py-0.5 rounded mb-2 shadow-sm">
                     <ChefHat size={12} /> Chef&apos;s Special
                   </span>
                 )}

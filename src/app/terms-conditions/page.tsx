@@ -4,6 +4,8 @@ import { Navigation } from '@/components/layout/Navigation';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Card } from '@/components/ui/Card';
 import { FileText, ClipboardCheck, AlertTriangle, HelpCircle, UtensilsCrossed, Ban } from 'lucide-react';
+import { PAGE_HEADERS } from '@/constant/constants';
+import Image from 'next/image';
 
 export default function TermsConditionsPage() {
     return (
@@ -12,7 +14,13 @@ export default function TermsConditionsPage() {
 
             {/* Header */}
             <section className="relative pt-32 pb-20 bg-gray-900 text-white overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://shimanto.x-grouprestaurant.com/uploads/0a1fa9f07cbdf936a7c69fad306091dc.jpg')] bg-cover bg-center opacity-20"></div>
+                <Image
+                    src={PAGE_HEADERS.terms}
+                    alt="Terms and Conditions"
+                    fill
+                    className="object-cover opacity-20"
+                    priority
+                />
                 <div className="container mx-auto px-4 relative z-10 text-center">
                     <SectionHeader
                         title="Terms & Conditions"
@@ -50,7 +58,7 @@ export default function TermsConditionsPage() {
                                             <p className="text-gray-700 font-medium">Must be confirmed <span className="text-convention font-bold">two (02) days</span> in advance. (Note: Some menu selections may require additional notice).</p>
                                         </div>
                                     </div>
-                                    <div className="flex items-center gap-3 p-4 bg-gold/10 border border-gold/20 rounded-xl text-gold-dark font-bold text-sm">
+                                    <div className="flex items-center gap-3 p-4 bg-silver/10 border border-silver/20 rounded-xl text-silver font-bold text-sm">
                                         <AlertTriangle size={18} />
                                         <span>Confirmation requires a 50% advance payment.</span>
                                     </div>

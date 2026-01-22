@@ -8,6 +8,8 @@ import { Button } from "../ui/Button";
 import { SectionHeader } from "../ui/SectionHeader";
 import { Card } from "../ui/Card";
 
+import Image from 'next/image';
+
 export const Gallery: React.FC = () => {
   const [filter, setFilter] = useState<"all" | "event" | "culinary">("all");
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -52,17 +54,16 @@ export const Gallery: React.FC = () => {
               {filteredItems.map((item) => (
                 <Card
                   key={item.id}
-                  className="group relative aspect-w-4 aspect-h-3 rounded-xl overflow-hidden cursor-pointer border-none shadow-md"
+                  className="group relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer border-none shadow-md"
                   onClick={() => setSelectedImage(item.image)}
                 >
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.title}
                     title={item.title}
-                    width={item.width || 800}
-                    height={item.height || 600}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
 
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300"></div>
@@ -74,7 +75,7 @@ export const Gallery: React.FC = () => {
                   </div>
 
                   <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-xs text-gold font-bold uppercase mb-1">
+                    <p className="text-xs text-silver font-bold uppercase mb-1">
                       {item.category}
                     </p>
                     <h3 className="text-white font-serif font-bold text-lg">
@@ -100,20 +101,26 @@ export const Gallery: React.FC = () => {
           >
             <Button
               variant="ghost"
-              className="absolute top-6 right-6 text-white/70 hover:text-white transition p-0 hover:bg-transparent border-none"
+              className="absolute top-6 right-6 text-white/70 hover:text-white transition p-0 hover:bg-transparent border-none z-10"
               onClick={() => setSelectedImage(null)}
             >
               <X size={40} />
             </Button>
-            <motion.img
+            <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              src={selectedImage}
-              alt="Gallery Preview"
-              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              className="relative w-full h-[90vh] max-w-7xl mx-auto"
               onClick={(e) => e.stopPropagation()}
-            />
+            >
+              <Image
+                src={selectedImage}
+                alt="Gallery Preview"
+                fill
+                className="object-contain rounded-lg shadow-2xl"
+                priority
+              />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -15,6 +15,30 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'shimanto.x-grouprestaurant.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'iconape.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.seeklogo.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'bfsa.teletalk.com.bd',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ik.imagekit.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.ibb.co.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.pravatar.cc',
+      },
     ],
   },
 };
