@@ -9,7 +9,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     desc: 'Experience Shimanto Convention Center — an elegant setting crafted for seamless gatherings and memorable occasions.',
     theme: 'convention',
     ctaPrimary: 'Explore Venues',
-    ctaSecondary: 'Virtual Tour',
+    ctaSecondary: 'Contact Us',
     width: 1200,
     height: 700
   },
@@ -127,7 +127,6 @@ export const PACKAGES: MenuPackage[] = [
       'Borhani / Soft Drinks (250 ml)',
       'Mineral Water'
     ],
-    style: 'Royal Service',
     image: 'https://shimanto.x-grouprestaurant.com/uploads/429965dc8c33dae64770d669d4d2669b.jpg',
     width: 750,
     height: 500
@@ -147,8 +146,7 @@ export const PACKAGES: MenuPackage[] = [
       'Borhani / Soft Drinks (250 ml)',
       'Mineral Water'
     ],
-    style: 'Royal Service',
-    image: 'https://i.ibb.co.com/SXFwdNYM/motor.jpg',
+    image: 'https://ik.imagekit.io/4iqsux69yt/Food%20Image/motor.jpeg',
     width: 1600,
     height: 1600
   },
@@ -167,7 +165,6 @@ export const PACKAGES: MenuPackage[] = [
       'Borhani / Soft Drinks ( 250 ml)',
       'Mineral Water'
     ],
-    style: 'Royal Service',
     image: 'https://i.ibb.co.com/rfvjmm6L/Shimanto-Special-Saffron-Polao-1.jpg',
     width: 1599,
     height: 1166
@@ -187,7 +184,6 @@ export const PACKAGES: MenuPackage[] = [
       'Special Firnee',
       'Mineral Water'
     ],
-    style: 'Plated',
     image: 'https://i.ibb.co.com/XxQ1VWPk/Shahi-Morog-Polao.jpg',
     width: 1600,
     height: 1064
@@ -207,7 +203,6 @@ export const PACKAGES: MenuPackage[] = [
       'Borhani / Soft Drinks ( 250 ml)',
       'Mineral Water'
     ],
-    style: 'Plated',
     image: 'https://shimanto.x-grouprestaurant.com/uploads/cd82bd9244c6bc867ced315b4ffeaff1.jpg',
     width: 258,
     height: 145
@@ -227,7 +222,6 @@ export const PACKAGES: MenuPackage[] = [
       'Special Jorda',
       'Mineral Water'
     ],
-    style: 'Plated',
     image: 'https://shimanto.x-grouprestaurant.com/uploads/1a64c7d90d8040e5b8719df9c3bffe8a.jpg',
     width: 235,
     height: 157
@@ -243,7 +237,6 @@ export const PACKAGES: MenuPackage[] = [
       'Borhani / Soft Drinks ( 250 ml)',
       'Mineral Water'
     ],
-    style: 'Plated',
     image: 'https://shimanto.x-grouprestaurant.com/uploads/32a0be4dbe1698018807546b0df2bf40.png',
     width: 333,
     height: 188
@@ -283,40 +276,53 @@ export const ADDITIONAL_ITEMS: AdditionalItem[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't1',
-    clientName: 'Sarah Jenkins',
-    role: 'Event Director',
-    company: 'TechSummit Global',
-    quote: 'The seamless transition from the conference keynote to the gourmet lunch was flawless. The venue tech was top-tier, but the Smoked Brisket stole the show.',
+    clientName: 'Mahmudul Hasan',
+    role: 'Head of Corporate Affairs',
+    company: 'Grameen Digital Solutions',
+    quote: 'From registration to closing remarks, everything ran like clockwork. The auditorium acoustics were excellent, and the Bengali–continental lunch struck the perfect balance.',
     venueRating: 5,
-    foodRating: 5,
-    pairedMenu: 'Corporate Power Lunch',
-    eventName: 'Annual Tech Symposium',
-    image: 'https://picsum.photos/id/64/100/100'
+    foodRating: 4.9,
+    pairedMenu: 'Executive Corporate Lunch',
+    eventName: 'Annual Business Leadership Conference',
+    image: 'https://picsum.photos/id/1005/100/100'
   },
   {
     id: 't2',
     clientName: 'Rafiqul Islam',
     role: 'Groom',
-    quote: 'We wanted a traditional wedding with a modern twist. The Grand Ballroom was majestic, and the Chef customized a fusion menu that delighted both generations.',
+    quote: 'We dreamed of a wedding that honored tradition without feeling outdated. The décor, lighting, and hospitality were spot on—and the Kacchi Biryani? Absolute crowd favorite.',
     venueRating: 5,
-    foodRating: 4.8,
-    pairedMenu: 'Royal Gala Feast',
+    foodRating: 5,
+    pairedMenu: 'Traditional Wedding Feast',
     eventName: 'Wedding Reception',
-    image: 'https://picsum.photos/id/91/100/100'
+    image: 'https://picsum.photos/id/1011/100/100'
   },
   {
     id: 't3',
-    clientName: 'Elena Rodriguez',
-    role: 'CEO',
-    company: 'Luxe Fashion',
-    quote: 'The Culinary Garden was the perfect backdrop for our summer collection launch. The live cooking stations added an interactive element that our guests loved.',
+    clientName: 'Nusrat Jahan',
+    role: 'Marketing Manager',
+    company: 'PRAN–RFL Group',
+    quote: 'The venue elevated our product launch effortlessly. Spacious layout, professional service team, and a refreshment menu that kept guests engaged throughout.',
+    venueRating: 4.8,
+    foodRating: 4.7,
+    pairedMenu: 'Premium Refreshment & Canapés',
+    eventName: 'New Product Launch Event',
+    image: 'https://picsum.photos/id/1012/100/100'
+  },
+  {
+    id: 't4',
+    clientName: 'Dr. Shafiqur Rahman',
+    role: 'Conference Chair',
+    company: 'Bangladesh Medical Association',
+    quote: 'Shimanto Convention Center provided an ideal setting for an academic gathering. Comfortable seating, reliable AV support, and timely catering made all the difference.',
     venueRating: 4.9,
-    foodRating: 5,
-    pairedMenu: 'Sunset Fusion Grill',
-    eventName: 'Product Launch',
-    image: 'https://picsum.photos/id/338/100/100'
+    foodRating: 4.8,
+    pairedMenu: 'Healthy Delegate Lunch',
+    eventName: 'National Medical Seminar',
+    image: 'https://picsum.photos/id/1027/100/100'
   }
 ];
+
 
 export const CERTIFICATIONS: Cert[] = [
   { title: 'BSTI Certified', issuer: 'Bangladesh Standards', image: 'https://iconape.com/wp-content/png_logo_vector/bsti-logo.png', type: 'venue', width: 300, height: 213 },
@@ -325,10 +331,10 @@ export const CERTIFICATIONS: Cert[] = [
 ];
 
 export const GALLERY_ITEMS: GalleryItem[] = [
-  { id: 'g1', type: 'event', image: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/close-up-people-serving-themselves-fruits-buffet-restaurant_8353-9872_pcsh74.avif', title: 'Grand Ballroom Setup', category: 'Wedding', width: 1480, height: 986 },
-  { id: 'g2', type: 'culinary', image: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/rich-dinner-tables-covered-with-blue-clothes-sparkling-glass_8353-799_etqpuv.avif', title: 'Live Pasta Station', category: 'Live Cooking', width: 1480, height: 986 },
-  { id: 'g3', type: 'event', image: 'https://picsum.photos/id/4/800/600', title: 'Corporate Seminar', category: 'Corporate', width: 800, height: 600 },
-  { id: 'g4', type: 'culinary', image: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/wedding-bread-served-plate-with-greenery-stands-plates_8353-547_uljxap.jpg', title: 'Plated Scallops', category: 'Fine Dining', width: 1480, height: 986 },
-  { id: 'g5', type: 'event', image: 'https://res.cloudinary.com/dkoprlux1/image/upload/v1764832651/luxurious-dinner-hall-with-large-crystal-chandelier_8353-565_eiup0m.avif', title: 'Garden Reception', category: 'Outdoor', width: 1480, height: 986 },
-  { id: 'g6', type: 'culinary', image: 'https://picsum.photos/id/488/800/600', title: 'Dessert Symphony', category: 'Dessert', width: 800, height: 600 },
+  { id: 'g1', type: 'event', image: 'https://ik.imagekit.io/4iqsux69yt/RGF04344.jpg', title: 'Grand Ballroom Setup', category: 'Wedding', width: 1480, height: 986 },
+  { id: 'g2', type: 'culinary', image: 'https://ik.imagekit.io/4iqsux69yt/RGF06602.jpg', title: 'Live Pasta Station', category: 'Live Cooking', width: 1480, height: 986 },
+  { id: 'g3', type: 'event', image: 'https://ik.imagekit.io/4iqsux69yt/2.JPG', title: 'Corporate Seminar', category: 'Corporate', width: 800, height: 600 },
+  { id: 'g4', type: 'culinary', image: 'https://ik.imagekit.io/4iqsux69yt/RGF06503.jpg', title: 'Plated Scallops', category: 'Fine Dining', width: 1480, height: 986 },
+  { id: 'g5', type: 'event', image: 'https://ik.imagekit.io/4iqsux69yt/RGF06525.jpg', title: 'Garden Reception', category: 'Outdoor', width: 1480, height: 986 },
+  { id: 'g6', type: 'culinary', image: 'https://ik.imagekit.io/4iqsux69yt/RGF06600.jpg', title: 'Dessert Symphony', category: 'Dessert', width: 800, height: 600 },
 ];

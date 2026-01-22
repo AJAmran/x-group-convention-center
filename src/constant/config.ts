@@ -3,11 +3,11 @@ export const SITE_CONFIG = {
     name: "Shimanto Convention Center",
     shortName: "SHIMANTO",
     tagline: "Convention & Catering",
-    url: "https://shimantoconvention.com", // Replace with actual production URL
+    url: "https://shimantoconvention.com",
     logo: "https://shimanto.x-grouprestaurant.com/uploads/ff6c6ecade66e52f2d2992fa7cab9763.png",
     description: "Shimanto Convention Center - The premier wedding and event venue in Dhanmondi, Dhaka. Experience elite hospitality, professional catering, and luxurious event spaces.",
     startYear: 1992,
-    hasMultipleVenues: false, // Set to true if the center has multiple halls (e.g., Hall A, Hall B)
+    hasMultipleVenues: false,
     contact: {
         phone: ["01755636268", "01755636321"],
         email: "shimanto@x-grouprestaurant.com",
@@ -17,7 +17,7 @@ export const SITE_CONFIG = {
             city: "Dhaka",
             full: "75, Bir Uttom M A Rob Road, 4th Floor, Shimanto Square Market, Dhaka",
         },
-        googleMapUrl: "#" // Placeholder for now
+        googleMapUrl: "https://maps.app.goo.gl/6ZWExafYzFbwNta18"
     },
     socials: {
         facebook: "https://www.facebook.com/shimantoconvention/?ref=pages_you_manage",
